@@ -7,6 +7,7 @@ All will be executed from an Ansible virtual machine in GCP
 Creation of a GCP project
   - iaac-gcloud
 Creation of several network environements
+  - mol         192.168.00.0/24
   - dev         192.168.10.0/24
   - prod        192.168.11.0/24
   - mon         192.168.12.0/24
