@@ -3,6 +3,7 @@ Infrastructure as a code on Google Cloud Platform
 
 All will be executed from an Ansible virtual machine in GCP
   - moloch-gcloud.fpittelo.ch
+  -             192.168.100.10
 Creation of a GCP project
   - iaac-gcloud
 Creation of several network environements
@@ -15,8 +16,7 @@ Creation of severy virtual machines
   - devdb       devdb-iaac-gcloud.fpittelo.ch
   -             192.168.10.11
   - prodweb     prodweb-iaac-gcloud.fpittelo.ch
-  -             192.168.11.10
-  -             
+  -             192.168.11.10 / PUBLIC IP
   - prodb       prodb-iaac-gcloud.fpittelo.ch
   -             192.168.11.11
   - monitoring  mon-iaac-gcloud.fpittelo.ch
