@@ -1,6 +1,8 @@
 # iaac-gcloud
 Infrastructure as a code on Google Cloud Platform
 
+[![Board Status](https://dev.azure.com/fpittelodevops/68bebcdf-c7f5-4e9a-aaaa-997b9b1c408c/1f813d3f-b365-49ec-a0a9-4e947e667dd8/_apis/work/boardbadge/84868457-8361-4ab7-93c6-c5da4a6446f2)](https://dev.azure.com/fpittelodevops/68bebcdf-c7f5-4e9a-aaaa-997b9b1c408c/_boards/board/t/1f813d3f-b365-49ec-a0a9-4e947e667dd8/Microsoft.RequirementCategory/)
+
 -All will be executed from an Ansible virtual machine in GCP
   - moloch-gcloud.fpittelo.ch
   -             192.168.100.10
