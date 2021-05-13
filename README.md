@@ -1,30 +1,20 @@
 # iaac-gcloud
 Infrastructure as a code on Google Cloud Platform project
 
-Code hosted on GitHub and project managed on Azure Devops
+Code hosted on GitHub https://github.com/fpittelo/iaac-gcloud
+Project is managed on Azure Devops https://dev.azure.com/fpittelodevops/iaac-gcloud
 
 [![Board Status](https://dev.azure.com/fpittelodevops/68bebcdf-c7f5-4e9a-aaaa-997b9b1c408c/1f813d3f-b365-49ec-a0a9-4e947e667dd8/_apis/work/boardbadge/84868457-8361-4ab7-93c6-c5da4a6446f2)](https://dev.azure.com/fpittelodevops/68bebcdf-c7f5-4e9a-aaaa-997b9b1c408c/_boards/board/t/1f813d3f-b365-49ec-a0a9-4e947e667dd8/Microsoft.RequirementCategory/)
 
--All will be executed from an Ansible virtual machine in GCP
-  - moloch-gcloud.fpittelo.ch
-  -             192.168.100.10
--Creation of a GCP project
-  - iaac-gcloud
+- All the infrastructure will be executed from an Ansible control machine hosted on Google Cloud
 
--Creation of several network environements
-  - mol         192.168.00.0/24
-  - dev         192.168.10.0/24
-  - prod        192.168.11.0/24
-  - mon         192.168.12.0/24
+  - moloch.fpittelo.ch 35.216.165.144
 
--Creation of several virtual machines
-  - devweb      devweb-iaac-gcloud.fpittelo.ch
-                192.168.10.10
-  - devdb       devdb-iaac-gcloud.fpittelo.ch
-  -             192.168.10.11
-  - prodweb     prodweb-iaac-gcloud.fpittelo.ch
-  -             192.168.11.10 / PUBLIC IP
-  - prodb       prodb-iaac-gcloud.fpittelo.ch
-  -             192.168.11.11
-  - monitoring  mon-iaac-gcloud.fpittelo.ch
-  -             192.168.12.10
+- Creation of several VPC network environements
+
+  - iaac-gcloud-vpcmon        10.172.10.0/24
+  - iaac-gcloud-vpcprod       10.172.11.0/24
+  - Iaac-gcloud-vpcdev        10.172.12.0/24
+
+- Creation of several virtual machines
+
