@@ -1,9 +1,10 @@
 ---
 - name: create a network
-  google.cloud.gcp_compute_network:
+  gcp_compute_network:
     name: iaac-gcloud-vpcmon
-    auto_create_subnetworks: 'true'
+    auto_create_subnetworks: yes
     project: IAAC
     auth_kind: serviceaccount
     service_account_file: "/home/ansible/security/ansible-service-account.json"
     state: present
+  register: network
