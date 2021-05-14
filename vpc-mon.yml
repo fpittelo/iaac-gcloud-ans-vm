@@ -1,10 +1,16 @@
+
 ---
-- name: create a network
-  gcp_compute_network:
-    name: iaac-gcloud-vpcmon
-    auto_create_subnetworks: yes
-    project: IAAC
-    auth_kind: serviceaccount
-    service_account_file: "/home/ansible/security/ansible-service-account.json"
-    state: present
-  register: network
+- name: Create a GCP instance
+  hosts: localhost
+  vars:
+    gcp_project: IAAC
+    gcp_cred_kind: serviceaccount
+  tasks:
+    - name: create a VPC network
+    gcp_compute_network:
+      name: iaac-gcloud-vpcmon
+      auto_create_subnetworks: yes
+      project: "{{ lookup('env','GCP_PROJECT') }}"
+      auth_kind: "{{ gcp_cred_kind }}"
+      state: present
+    register: network
