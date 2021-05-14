@@ -7,10 +7,12 @@
     gcp_cred_kind: serviceaccount
   tasks:
     - name: create a VPC network
-    gcp_compute_network:
-      name: iaac-gcloud-vpcmon
-      auto_create_subnetworks: yes
-      project: "{{ lookup('env','GCP_PROJECT') }}"
-      auth_kind: "{{ gcp_cred_kind }}"
-      state: present
-    register: network
+      gcp_compute_network:
+        name: iaac-gcloud-vpcmon
+        auto_create_subnetworks: yes
+        project: "{{ lookup('env','GCP_PROJECT') }}"
+        auth_kind: "{{ gcp_cred_kind }}"
+        scopes:
+          - https://www.googleapis.com/auth/compute
+        state: present
+      register: network
