@@ -11,7 +11,7 @@
             boot: true
             initialize_params:
               source_image: projects/ubuntu-os-cloud/global/images/ubuntu-2010-groovy-v20210511a
-        network_interface:
+        network_interfaces:
           - access_configs:
               - name: External NAT
                 type: ONE_TO_ONE_NAT
@@ -27,4 +27,3 @@
         auth_kind: serviceaccount
         service_account: /home/frederic_pitteloud_gmail_com/security/ansible-iaac-gcloud.json
         state: present
-            
