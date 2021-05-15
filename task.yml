@@ -25,5 +25,5 @@
         zone: europe-west6-a
         project: iaac-gloud-313808
         auth_kind: serviceaccount
-        service_account: /home/frederic_pitteloud_gmail_com/security/ansible-iaac-gcloud.json
+        service_account_file: /home/frederic_pitteloud_gmail_com/security/ansible-iaac-gcloud.json
         state: present
