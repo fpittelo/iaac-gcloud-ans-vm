@@ -2,7 +2,7 @@
   - hosts: localhost
     connection: local
     tasks:
-     - name: creating instance
+     - name: create instance
        gcp_compute_instance:
         name: webdev
         machine_type: e2-micro
