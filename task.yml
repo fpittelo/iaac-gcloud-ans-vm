@@ -2,28 +2,28 @@
   - hosts: localhost
     connection: local
     tasks:
-      - name: creating instance
-        gcp_compute_instance:
-          name: webdev
-          machine_type: e2-micro
-          disks:
-            - auto-delete: true
-              boot: true
-              initialize_params:
-                source_image: projects/ubuntu-os-cloud/global/images/ubuntu-2010-groovy-v20210511a
-          network_interfaces:
-            - access_configs:
-                - name: External NAT
-                  type: ONE_TO_ONE_NAT
-          metadata:
-            startup-script:  |
-                #! /bin/bash
-                apt -y update
-                apt -y install httpd
-                sudo echo "Salut Fred" > /var/www/html/index.html
-                sudo systemctl restart httpd
-          zone: europe-west6-a
-          project: iaac-gloud-313808
-          auth_kind: serviceaccount
-          service_account: /home/frederic_pitteloud_gmail_com/security/ansible-iaac-gcloud.json
-          state: present
+     - name: creating instance
+       gcp_compute_instance:
+        name: webdev
+        machine_type: e2-micro
+        disks:
+          - auto-delete: true
+            boot: true
+            initialize_params:
+              source_image: projects/ubuntu-os-cloud/global/images/ubuntu-2010-groovy-v20210511a
+        network_interfaces:
+          - access_configs:
+              - name: External NAT
+                type: ONE_TO_ONE_NAT
+        metadata:
+          startup-script:  |
+              #! /bin/bash
+              apt -y update
+              apt -y install httpd
+              sudo echo "Salut Fred" > /var/www/html/index.html
+              sudo systemctl restart httpd
+        zone: europe-west6-a
+        project: iaac-gloud-313808
+        auth_kind: serviceaccount
+        service_account: /home/frederic_pitteloud_gmail_com/security/ansible-iaac-gcloud.json
+        state: present
