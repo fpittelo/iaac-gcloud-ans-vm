@@ -12,10 +12,9 @@
             initialize_params:
               source_image: projects/ubuntu-os-cloud/global/images/ubuntu-2010-groovy-v20210511a
         network_interfaces:
-          - network: moloch-vpc
-            #access_configs:
-            #  - name: External NAT
-            #   type: ONE_TO_ONE_NAT
+          - access_configs:
+              - name: External Nat
+                type: ONE_TO_ONE_NAT         
         metadata:
           startup-script:  |
               #! /bin/bash
