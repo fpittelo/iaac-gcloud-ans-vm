@@ -7,7 +7,7 @@
         name: webdev
         machine_type: e2-micro
         disks:
-          - auto_delete: true
+          - auto-delete: true
             boot: true
             initialize_params:
               source_image: projects/ubuntu-os-cloud/global/images/ubuntu-2010-groovy-v20210511a
