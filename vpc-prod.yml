@@ -3,7 +3,7 @@
     connection: local
     tasks:
       - name: create instance
-      gcp_compute_network:
+        gcp_compute_network:
         name: iaac-gcloud-vpcdev
         description: prod-vpc
         auto_create_subnetworks: true
