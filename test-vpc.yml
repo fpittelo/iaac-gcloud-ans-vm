@@ -1,0 +1,12 @@
+---
+  - host: localhost
+    connection: local
+    tasks:
+      - name: create a network
+        google.cloud.gcp_compute_network:
+          name: test_object
+          auto_create_subnetworks: 'true'
+          project: test_project
+          auth_kind: serviceaccount
+          service_account_file: /home/frederic_pitteloud_gmail_com/security/ansible-iaac-gcloud.json
+          state: present

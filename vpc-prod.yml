@@ -6,7 +6,7 @@
         gcp_compute_network:
           name: iaac-gcloud-vpcdev
           description: prod-vpc
-          auto_create_subnetworks: true
+          auto_create_subnetworks: yes
           project: iaac-gloud-313808
           zone: europe-west6-a
           auth_kind: serviceaccount
