@@ -13,10 +13,6 @@
         auth_kind: serviceaccount
         service_account_file: /home/frederic_pitteloud_gmail_com/security/ansible-iaac-gcloud.json
         state: present
-
-
+#
 # gcloud compute networks create prod-vpc --project=iaac-gloud-313808 --description=prod-vpc --subnet-mode=auto --mtu=1460 --bgp-routing-mode=regional
-#
-#
-#
 #
