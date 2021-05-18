@@ -1,5 +1,5 @@
 ---
-  - host: localhost
+  - hosts: localhost
     connection: local
     tasks:
       - name: create a network
