@@ -2,9 +2,25 @@
   - hosts: localhost
     connection: local
     tasks:
-      - name: create a network
+      - name: create a network dev
         google.cloud.gcp_compute_network:
           name: iaac-gcloud-vpcdev
+          auto_create_subnetworks: 'true'
+          project: iaac-gloud-313808
+          auth_kind: serviceaccount
+          service_account_file: /home/frederic_pitteloud_gmail_com/security/ansible-iaac-gcloud.json
+          state: present
+      - name: create a network prod
+        google.cloud.gcp_compute_network:
+          name: iaac-gcloud-vpcprod
+          auto_create_subnetworks: 'true'
+          project: iaac-gloud-313808
+          auth_kind: serviceaccount
+          service_account_file: /home/frederic_pitteloud_gmail_com/security/ansible-iaac-gcloud.json
+          state: present
+      - name: create a network mon
+        google.cloud.gcp_compute_network:
+          name: iaac-gcloud-vpcmon
           auto_create_subnetworks: 'true'
           project: iaac-gloud-313808
           auth_kind: serviceaccount
