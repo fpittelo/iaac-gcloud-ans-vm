@@ -1,16 +1,21 @@
 ---
   - hosts: localhost
     connection: local
+    gather_facts: yes
     vars:
-      project: 'iaac-gloud-313808'
-      account_type: 'serviceaccount'
-      account_file: '/home/frederic_pitteloud_gmail_com/security/ansible-iaac-gcloud.json'
+      gcp_project: iaac-gloud-313808
+      gcp_account_type: serviceaccount
+      gcp_account_file: /home/frederic_pitteloud_gmail_com/security/ansible-iaac-gcloud.json
+
+########## create VCP network ###########
+
     tasks:
+
       - name: create a network dev
-        google.cloud.gcp_compute_network:
+        gcp_compute_network:
           name: iaac-gcloud-vpcdev
           auto_create_subnetworks: 'true'
-          project: "{{ project }}"
-          auth_kind: "{{ account_type }}"
-          service_account_file: "{{ account_file }}"
+          project: "{{ gcp_project }}"
+          auth_kind: "{{ gcp_account_type }}"
+          service_account_file: "{{ gcp_account_file }}"
           state: present
