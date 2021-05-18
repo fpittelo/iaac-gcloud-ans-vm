@@ -2,15 +2,15 @@
   - hosts: localhost
     connection: local
     vars:
-      project: {{iaac-gloud-313808}}
-      account_type: {{serviceaccount}}
-      account_file: {{/home/frederic_pitteloud_gmail_com/security/ansible-iaac-gcloud.json}}
+      project: "{{ iaac-gloud-313808 }}"
+      account_type: "{{ serviceaccount}}"
+      account_file: "{{ /home/frederic_pitteloud_gmail_com/security/ansible-iaac-gcloud.json }}"
     tasks:
       - name: create a network dev
         google.cloud.gcp_compute_network:
           name: iaac-gcloud-vpcdev
           auto_create_subnetworks: 'true'
-          project: {{project}}
-          auth_kind: {{account_type}}
-          service_account_file: {{account_file}}
+          project: "{{ project }}"
+          auth_kind: "{{ account_type }}"
+          service_account_file: "{{ account_file }}"
           state: present
