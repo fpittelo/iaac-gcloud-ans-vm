@@ -9,7 +9,7 @@
           project: iaac-gloud-313808
           auth_kind: serviceaccount
           service_account_file: /home/frederic_pitteloud_gmail_com/security/ansible-iaac-gcloud.json
-          state: present
+          state: absent
       - name: create a network prod
         google.cloud.gcp_compute_network:
           name: iaac-gcloud-vpcprod
@@ -17,7 +17,7 @@
           project: iaac-gloud-313808
           auth_kind: serviceaccount
           service_account_file: /home/frederic_pitteloud_gmail_com/security/ansible-iaac-gcloud.json
-          state: present
+          state: absent
       - name: create a network mon
         google.cloud.gcp_compute_network:
           name: iaac-gcloud-vpcmon
@@ -25,4 +25,4 @@
           project: iaac-gloud-313808
           auth_kind: serviceaccount
           service_account_file: /home/frederic_pitteloud_gmail_com/security/ansible-iaac-gcloud.json
-          state: present
+          state: absent
