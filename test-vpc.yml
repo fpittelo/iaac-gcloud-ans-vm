@@ -4,7 +4,7 @@
     tasks:
       - name: create a network
         google.cloud.gcp_compute_network:
-          name: test_object
+          name: iaac-gcloud-vpcdev
           auto_create_subnetworks: 'true'
           project: iaac-gloud-313808
           auth_kind: serviceaccount
