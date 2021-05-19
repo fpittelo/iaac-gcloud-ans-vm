@@ -26,7 +26,7 @@
 
       - name: create prod vpc network
         gcp_compute_network:
-          name: iaac-gcloud-vpcdev
+          name: iaac-gcloud-vpcprod
           auto_create_subnetworks: 'true'
           project: "{{ gcp_project }}"
           auth_kind: "{{ gcp_account_type }}"
