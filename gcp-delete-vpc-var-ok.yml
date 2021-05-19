@@ -13,7 +13,7 @@
 
     tasks:
 
-      - name: create dev vpc network
+      - name: delete dev vpc network
         gcp_compute_network:
           name: iaac-gcloud-vpcdev
           auto_create_subnetworks: 'true'
@@ -24,9 +24,20 @@
 
 ########## create prod vpc network ###########
 
-      - name: create prod vpc network
+      - name: delete prod vpc network
         gcp_compute_network:
           name: iaac-gcloud-vpcprod
+          auto_create_subnetworks: 'true'
+          project: "{{ gcp_project }}"
+          auth_kind: "{{ gcp_account_type }}"
+          service_account_file: "{{ gcp_account_file }}"
+          state: absent
+
+########## create default vpc network ###########
+
+      - name: delete default vpc network
+        gcp_compute_network:
+          name: default
           auto_create_subnetworks: 'true'
           project: "{{ gcp_project }}"
           auth_kind: "{{ gcp_account_type }}"
