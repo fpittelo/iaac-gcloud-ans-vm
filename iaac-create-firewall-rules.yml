@@ -16,7 +16,7 @@
       - name: create ICMP firewall rules
         gcp_compute_firewall:
           name: fw-vpcdev-allow-icmp
-          network: "projects/iaac-gloud-313808/global/networks/iaac-gcloud-vpcdev"
+          network: projects/iaac-gloud-313808/global/networks/iaac-gcloud-vpcdev
           direction: "INGRESS"
           description: Allow ICMP
           allowed:
