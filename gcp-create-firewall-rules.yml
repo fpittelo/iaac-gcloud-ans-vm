@@ -18,8 +18,6 @@
       - name: create ICMP firewall rules
         gcp_compute_firewall:
           name: fw-vpcdev-allow-icmp
-          selfLink:
-            project: "{{ gcp_project }}"
           network: iaac-gcloud-vpcdev
           direction: "INGRESS"
           description: Allow ICMP
