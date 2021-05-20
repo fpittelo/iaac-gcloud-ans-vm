@@ -17,10 +17,16 @@
         gcp_compute_firewall:
           name: fw-vpcdev-allow-icmp
           network: "projects/iaac-gloud-313808/global/networks/iaac-gcloud-vpcdev"
+          direction: "INGRESS"
+          description: Allow ICMP
           allowed:
           - ip_protocol: tcp
             ports:
             - '7'
+          - ip_protocol: udp
+            ports:
+            - '7'
+          source ranges: 0.0.0.0/0
           project: "{{ gcp_project }}"
           auth_kind: "{{ gcp_account_type }}"
           service_account_file: "{{ gcp_account_file }}"
