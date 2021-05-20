@@ -12,12 +12,18 @@
     tasks:
 
 ########## create firewall rules ############
+#https://stackoverflow.com/questions/65582174/specifying-a-subnetwork-for-ansible-google-cloud-compute-instance#
+
+      - name: Get Network URL
+        set_fact:
+          network_url: "{{ network | json_query(jmesquery) }}"
+        vars:
+          jmesquery: "{selfLink: selfLink}"
 
       - name: create ICMP firewall rules
         gcp_compute_firewall:
           name: fw-vpcdev-allow-icmp
-          selfLink: "projects/iaac-gloud-313808/global/firewalls/fw-vpcdev-allow-icmp"
-          network: "projects/iaac-gloud-313808/global/networks/iaac-gcloud-vpcdev"
+          network: "{{ network_url }}"
           direction: "INGRESS"
           description: Allow ICMP
           allowed:
