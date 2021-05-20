@@ -11,7 +11,7 @@
 
     tasks:
 
-########## create firewall rules ###########
+########## create firewall rules ############
 
       - name: create ICMP firewall rules
         gcp_compute_firewall:
