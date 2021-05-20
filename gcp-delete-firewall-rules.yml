@@ -15,3 +15,8 @@
 
       - name: delete ICMP firewall rules
         gcp_compute_firewall:
+          name: default-allow-icmp
+          project: "{{ gcp_project }}"
+          auth_kind: "{{ gcp_account_type }}"
+          service_account_file: "{{ gcp_account_file }}"
+          state: absent
