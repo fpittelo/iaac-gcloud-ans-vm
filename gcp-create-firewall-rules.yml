@@ -15,6 +15,11 @@
 #https://stackoverflow.com/questions/65582174/specifying-a-subnetwork-for-ansible-google-cloud-compute-instance#
 #https://www.googleapis.com/compute/v1/projects/iaac-gloud-313808/global/networks/iaac-gcloud-vpcdev#
 
+      - name: dictionary
+        hosts: localhost
+        vars:
+          selfLink: https://www.googleapis.com/compute/v1/projects/iaac-gloud-313808/global/networks/iaac-gcloud-vpcdev
+
       - name: create ICMP firewall rules
         gcp_compute_firewall:
           name: fw-vpcdev-allow-icmp
