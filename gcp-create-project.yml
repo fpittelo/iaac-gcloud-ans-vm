@@ -15,7 +15,7 @@
 
       - name: create dev vpc network
         gcp_resourcemanager_project:
-          name: test_project
+          name: test-project
           id: iaac-gcloud-19481945
           auth_kind: "{{ gcp_account_type }}"
           service_account_file: "{{ gcp_account_file }}"
