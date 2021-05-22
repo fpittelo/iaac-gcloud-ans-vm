@@ -9,7 +9,7 @@
       gcp_zone: 'europe-west6-b'
       gcp_region: 'europe-west6'
 
-########## create dev vpc network ###########
+########## create gcp project ###########
 
     tasks:
 
@@ -19,4 +19,7 @@
           id: iaac-gcloud-19481945
           auth_kind: "{{ gcp_account_type }}"
           service_account_file: "{{ gcp_account_file }}"
+          parent:
+            type: organization
+            id: 636173955921
           state: present
