@@ -34,12 +34,12 @@
           state: absent
 
 ########## create default vpc network ###########
-
-      - name: delete default vpc network
-        gcp_compute_network:
-          name: default
-          auto_create_subnetworks: 'true'
-          project: "{{ gcp_project }}"
-          auth_kind: "{{ gcp_account_type }}"
-          service_account_file: "{{ gcp_account_file }}"
-          state: absent
+#
+#     - name: delete default vpc network
+#       gcp_compute_network:
+#         name: default
+#         auto_create_subnetworks: 'true'
+#         project: "{{ gcp_project }}"
+#         auth_kind: "{{ gcp_account_type }}"
+#         service_account_file: "{{ gcp_account_file }}"
+#         state: absent
