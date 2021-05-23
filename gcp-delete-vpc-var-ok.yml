@@ -9,7 +9,7 @@
       gcp_zone: 'europe-west6-b'
       gcp_region: 'europe-west6'
 
-########## create dev vpc network ###########
+########## delete iaac-gcloud-vpcdev network ###########
 
     tasks:
 
@@ -22,7 +22,7 @@
           service_account_file: "{{ gcp_account_file }}"
           state: absent
 
-########## create prod vpc network ###########
+########## delete iaac-gcloud-vpcprod vpc network ###########
 
       - name: delete prod vpc network
         gcp_compute_network:
@@ -33,7 +33,7 @@
           service_account_file: "{{ gcp_account_file }}"
           state: absent
 
-########## create default vpc network ###########
+########## delete default vpc network ###########
 #
 #     - name: delete default vpc network
 #       gcp_compute_network:
