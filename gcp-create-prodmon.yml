@@ -33,7 +33,6 @@
       - name: create a network
         gcp_compute_network:
           name: moloch-vpc
-          zone: "{{ gcp_zone }}"
           region: "{{ gcp_region }}"
           project: "{{ gcp_project }}"
           auth_kind: "{{ gcp_account_type }}"
