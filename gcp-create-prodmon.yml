@@ -28,6 +28,19 @@
           state: present
         register: disk
 
+########## create prodmon network ##################
+
+      - name: create a network
+        gcp_compute_network:
+          name: moloch-vpc
+          zone: "{{ gcp_zone }}"
+          region: "{{ gcp_region }}"
+          project: "{{ gcp_project }}"
+          auth_kind: "{{ gcp_account_type }}"
+          service_account_file: "{{ gcp_account_file }}"
+          state: present
+        register: moloch-vpc
+
 ########## create prodmon ip address ##################
 
       - name: create a address
