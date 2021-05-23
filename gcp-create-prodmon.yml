@@ -20,7 +20,7 @@
         gcp_compute_disk:
           name: prodmon-disk
           size_gb: 10
-          source_image: projects/ubuntu-os-cloud/global/images/ubuntu-2010-groovy-v20210511a
+          source_image: projects/iaac-gloud-313808/zones/europe-west6-b/disks/prodmon-disk
           zone: "{{ gcp_zone }}"
           project: "{{ gcp_project }}"
           auth_kind: "{{ gcp_account_type }}"
