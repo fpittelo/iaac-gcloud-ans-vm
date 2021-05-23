@@ -20,7 +20,7 @@
         gcp_compute_disk:
           name: prodmon-disk
           size_gb: 10
-          source_image: projects/iaac-gloud-313808/zones/europe-west6-b/disks/prodmon-disk
+          source_image: projects/ubuntu-os-cloud/global/licenses/ubuntu-2010
           zone: "{{ gcp_zone }}"
           project: "{{ gcp_project }}"
           auth_kind: "{{ gcp_account_type }}"
@@ -64,8 +64,6 @@
           - auto_delete: 'true'
             interface: NVME
             type: SCRATCH
-            initialize_params:
-              source_image: projects/ubuntu-os-cloud/global/images/ubuntu-2010-groovy-v20210511a
           network_interfaces:
           - network: "{{ network }}"
             access_configs:
