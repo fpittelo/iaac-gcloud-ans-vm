@@ -8,6 +8,8 @@
       gcp_account_file: /home/frederic_pitteloud_gmail_com/security/ansible-iaac-gcloud.json
       gcp_zone: 'europe-west6-b'
       gcp_region: 'europe-west6'
+      gcp_net_mgt: 'moloch-vpc'
+      gcp_net_prod: 'iaac-gcloud-vpc'
       gcp_vm_img: 'projects/ubuntu-os-cloud/global/images/ubuntu-2010-groovy-v20210511a'
 
     tasks:
@@ -54,7 +56,7 @@
             initialize_params:
               disk_type: local-ssd
           network_interfaces:
-          - network: moloch-vpc
+          - network: "{{ gcp_net_mgt }}"
             access_configs:
             - name: External NAT
               nat_ip: "{{ address }}"
