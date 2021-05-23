@@ -20,7 +20,7 @@
         gcp_compute_disk:
           name: prodmon-disk
           size_gb: 10
-          source_image: "{{ gcp_vm_img }}"
+          source_image: projects/ubuntu-os-cloud/global/images/ubuntu-2010-groovy-v20210511a
           zone: "{{ gcp_zone }}"
           project: "{{ gcp_project }}"
           auth_kind: "{{ gcp_account_type }}"
@@ -60,7 +60,7 @@
           disks:
           - auto_delete: 'true'
             boot: 'true'
-            source: "{{ gcp_vm_img }}"
+            source: "{{ disk }}"
           - auto_delete: 'true'
             interface: NVME
             type: SCRATCH
