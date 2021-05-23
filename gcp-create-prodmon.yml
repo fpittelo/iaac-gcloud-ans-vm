@@ -37,7 +37,7 @@
           auth_kind: "{{ gcp_account_type }}"
           service_account_file: "{{ gcp_account_file }}"
           state: present
-        register: address
+        register: network
 
 ########## create prodmon ip address ##################
 
@@ -67,7 +67,7 @@
             initialize_params:
               disk_type: local-ssd
           network_interfaces:
-          - network: "{{ gcp_net_mgt }}"
+          - network: "{{ network }}"
             access_configs:
             - name: External NAT
               nat_ip: "{{ address }}"
