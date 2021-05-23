@@ -43,7 +43,7 @@
 
       - name: create a address
         gcp_compute_address:
-          name: prodmon-ip
+          name: prodmon-pub-ip
           region: "{{ gcp_region }}"
           project: "{{ gcp_project }}"
           auth_kind: "{{ gcp_account_type }}"
