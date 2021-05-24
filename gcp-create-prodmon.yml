@@ -20,7 +20,7 @@
         gcp_compute_disk:
           name: prodmon-disk
           size_gb: 10
-          source_image: projects/ubuntu-os-cloud/global/licenses/ubuntu-2010
+          source_image: "{{ gcp_vm_img }}"
           zone: "{{ gcp_zone }}"
           project: "{{ gcp_project }}"
           auth_kind: "{{ gcp_account_type }}"
