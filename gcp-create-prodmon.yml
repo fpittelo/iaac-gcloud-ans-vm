@@ -44,6 +44,7 @@
       - name: create a address
         gcp_compute_address:
           name: prodmon-pub-ip
+          network_tier: standard
           region: "{{ gcp_region }}"
           project: "{{ gcp_project }}"
           auth_kind: "{{ gcp_account_type }}"
