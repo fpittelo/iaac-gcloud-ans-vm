@@ -15,7 +15,7 @@
 
       - name: create ICMP firewall rules
         gcp_compute_firewall:
-          name: allow ssh from internet
+          name: allow-ssh-from-internet
           allowed:
           - ip_protocol: tcp
             ports:
