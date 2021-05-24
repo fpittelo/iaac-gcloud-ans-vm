@@ -61,11 +61,6 @@
           - auto_delete: 'true'
             boot: 'true'
             source: "{{ disk }}"
-          - auto_delete: 'true'
-            interface: NVME
-            type: SCRATCH
-            initialize_params:
-              source_image: projects/ubuntu-os-cloud/global/images/ubuntu-2010-groovy-v20210511a
           network_interfaces:
           - network: "{{ network }}"
             access_configs:
@@ -77,3 +72,4 @@
           auth_kind: "{{ gcp_account_type }}"
           service_account_file: "{{ gcp_account_file }}"
           state: present
+        register: instance
