@@ -41,7 +41,7 @@
 
 ########## create prodmon internal ip address ##################
 
-      - name: create a address
+      - name: create a internal address
         gcp_compute_address:
           name: prodmon-int-ip
           address: 10.172.0.6
@@ -55,7 +55,7 @@
 
 ########## create prodmon public ip address ##################
 
-      - name: create a address
+      - name: create a public address
         gcp_compute_address:
           name: prodmon-pub-ip
           region: "{{ gcp_region }}"
