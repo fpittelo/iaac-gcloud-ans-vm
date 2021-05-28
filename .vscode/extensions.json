@@ -1,6 +1,7 @@
 {
     "recommendations": [
         "redhat.vscode-yaml",
-        "haaaad.ansible"
+        "haaaad.ansible",
+        "github.vscode-pull-request-github"
     ]
 }
