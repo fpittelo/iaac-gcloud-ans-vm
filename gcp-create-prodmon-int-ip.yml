@@ -45,14 +45,14 @@
         gcp_compute_address:
           name: prodmon-int-ip
           address: 10.172.0.6
-          subnetwork: projects/iaac-gloud-313808/global/networks/moloch-vpc
+          network: "{{ network }}"
           address_type: internal
           region: "{{ gcp_region }}"
           project: "{{ gcp_project }}"
           auth_kind: "{{ gcp_account_type }}"
           service_account_file: "{{ gcp_account_file }}"
           state: present
-        register: address
+        register: intaddress
 
 ########## create prodmon public ip address ##################
 
