@@ -45,7 +45,6 @@
         gcp_compute_address:
           name: prodmon-int-ip
           address: 10.172.0.6
-          network: "{{ network }}"
           address_type: internal
           region: "{{ gcp_region }}"
           project: "{{ gcp_project }}"
