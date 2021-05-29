@@ -1,0 +1,89 @@
+---
+  - hosts: localhost
+    connection: local
+    gather_facts: yes
+    vars:
+      gcp_project: iaac-gloud-313808
+      gcp_account_type: serviceaccount
+      gcp_account_file: /home/frederic_pitteloud_gmail_com/security/ansible-iaac-gcloud.json
+      gcp_zone: 'europe-west6-b'
+      gcp_region: 'europe-west6'
+      gcp_net_mgt: 'moloch-vpc'
+      gcp_net_prod: 'iaac-gcloud-vpc'
+      gcp_vm_img: 'projects/ubuntu-os-cloud/global/images/ubuntu-2010-groovy-v20210511a'
+
+    tasks:
+
+########## create prodmon disk ##################
+
+      - name: create a disk
+        gcp_compute_disk:
+          name: prodmon-disk
+          size_gb: 10
+          source_image: "{{ gcp_vm_img }}"
+          zone: "{{ gcp_zone }}"
+          project: "{{ gcp_project }}"
+          auth_kind: "{{ gcp_account_type }}"
+          service_account_file: "{{ gcp_account_file }}"
+          state: present
+        register: disk
+
+########## create prodmon network ##################
+
+      - name: create a network
+        gcp_compute_network:
+          name: moloch-vpc
+          project: "{{ gcp_project }}"
+          auth_kind: "{{ gcp_account_type }}"
+          service_account_file: "{{ gcp_account_file }}"
+          state: present
+        register: network
+
+########## create prodmon internal ip address ##################
+
+      - name: create a internal address
+        gcp_compute_address:
+          name: prodmon-int-ip
+          address: 10.172.0.6
+          address_type: internal
+          region: "{{ gcp_region }}"
+          project: "{{ gcp_project }}"
+          auth_kind: "{{ gcp_account_type }}"
+          service_account_file: "{{ gcp_account_file }}"
+          state: present
+        register: intaddress
+
+########## create prodmon public ip address ##################
+
+      - name: create a public address
+        gcp_compute_address:
+          name: prodmon-pub-ip
+          region: "{{ gcp_region }}"
+          project: "{{ gcp_project }}"
+          auth_kind: "{{ gcp_account_type }}"
+          service_account_file: "{{ gcp_account_file }}"
+          state: present
+        register: address
+
+########## create prodmon instance ##################
+
+      - name: create prodmon instance
+        gcp_compute_instance:
+          name: prodmon
+          machine_type: e2-micro
+          disks:
+          - auto_delete: 'true'
+            boot: 'true'
+            source: "{{ disk }}"
+          network_interfaces:
+          - network: "{{ network }}"
+            access_configs:
+            - name: External NAT
+              nat_ip: "{{ address }}"
+              type: ONE_TO_ONE_NAT
+          zone: "{{ gcp_zone }}"
+          project: "{{ gcp_project }}"
+          auth_kind: "{{ gcp_account_type }}"
+          service_account_file: "{{ gcp_account_file }}"
+          state: present
+        register: instance
