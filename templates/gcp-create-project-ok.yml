@@ -13,7 +13,7 @@
 
     tasks:
 
-      - name: create dev vpc network
+      - name: create gcp project
         gcp_resourcemanager_project:
           name: test-project
           id: iaac-gcloud-19481945
