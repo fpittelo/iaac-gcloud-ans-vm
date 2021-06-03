@@ -67,7 +67,7 @@
             - name: External NAT
               nat_ip: "{{ address }}"
               type: ONE_TO_ONE_NAT
-          status: running
+          status: RUNNING
           zone: "{{ gcp_zone }}"
           project: "{{ gcp_project }}"
           auth_kind: "{{ gcp_account_type }}"
