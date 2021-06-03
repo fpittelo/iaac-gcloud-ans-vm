@@ -23,7 +23,7 @@
           target_tags:
           - prodmon
           source_tags:
-          - 0.0.0.0/0
+            ["0.0.0.0/0"]
           project: "{{ gcp_project }}"
           auth_kind: "{{ gcp_account_type }}"
           service_account_file: "{{ gcp_account_file }}"
