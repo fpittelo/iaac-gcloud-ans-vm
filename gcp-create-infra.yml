@@ -40,7 +40,7 @@
           auth_kind: "{{ gcp_account_type }}"
           service_account_file: "{{ gcp_account_file }}"
           state: present
-        register: network
+        register: address
 
 ########## create prodmon vm instance ####################
 
@@ -56,7 +56,7 @@
           - network: default
             access_config:
             - name: External NAT
-              nat_ip: "{{ network }}"
+              nat_ip: "{{ address }}"
               type: ONE_TO_ONE_NAT
           project: "{{ gcp_project }}"
           zone: "{{ gcp_zone }}"
