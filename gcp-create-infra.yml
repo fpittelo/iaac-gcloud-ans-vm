@@ -64,8 +64,7 @@
             boot: 'true'
             source: "{{ disk }}"
           network_interfaces:
-          - network: "{{ network }}"
-            access_configs:
+          - access_configs:
             - name: External NAT
               nat_ip: "{{ address }}"
               type: ONE_TO_ONE_NAT
