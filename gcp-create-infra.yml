@@ -44,7 +44,8 @@
       - name: create prodmon ip address
         gcp_compute_address:
           name: prodmon-pub-ip
-          address_type: EXTERNAL
+          address_type: INTERNAL
+          address: 10.172.0.7
           network_tier: STANDARD
           region: "{{ gcp_region }}"
           project: "{{ gcp_project }}"
