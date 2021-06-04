@@ -40,7 +40,7 @@
           auth_kind: "{{ gcp_account_type }}"
           service_account_file: "{{ gcp_account_file }}"
           state: present
-        register: prodmon-pub-ip
+        register: network
 
 ########## create prodmon vm instance ####################
 
