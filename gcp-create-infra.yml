@@ -32,7 +32,7 @@
 
       - name: create a network
         gcp_compute_network:
-          name: default
+          name: moloch-vpc
           project: "{{ gcp_project }}"
           auth_kind: "{{ gcp_account_type }}"
           service_account_file: "{{ gcp_account_file }}"
