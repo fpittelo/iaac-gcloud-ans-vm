@@ -56,7 +56,7 @@
           - network: default
             access_config:
             - name: External NAT
-              nat_ip: "{{ prodmon-pub-ip }}"
+              nat_ip: "{{ network }}"
               type: ONE_TO_ONE_NAT
           project: "{{ gcp_project }}"
           zone: "{{ gcp_zone }}"
