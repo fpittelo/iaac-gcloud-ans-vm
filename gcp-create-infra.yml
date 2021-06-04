@@ -48,9 +48,9 @@
         gcp_compute_instance:
           name: prodmon
           machine_type: e2-micro
-          status: RUNNING
-          tags: prodmon
           disks:
+          - auto_delete: 'true'
+            boot: 'true'
             source: "{{ disk }}"
 #         network_interfaces:
 #         - network: "{{ network }}"
@@ -58,9 +58,9 @@
 #           - name: External NAT
 #             nat_ip: "{{ address }}"
 #             type: ONE_TO_ONE_NAT
+          status: RUNNING
           project: "{{ gcp_project }}"
           zone: "{{ gcp_zone }}"
-          region: "{{ gcp_region }}"
           auth_kind: "{{ gcp_account_type }}"
           service_account_file: "{{ gcp_account_file }}"
           state: present
