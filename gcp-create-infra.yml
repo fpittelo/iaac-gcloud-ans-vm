@@ -46,7 +46,6 @@
           name: prodmon-pub-ip
           address_type: INTERNAL
           address: 10.172.0.7
-          network_tier: STANDARD
           region: "{{ gcp_region }}"
           project: "{{ gcp_project }}"
           auth_kind: "{{ gcp_account_type }}"
