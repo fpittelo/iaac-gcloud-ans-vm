@@ -53,7 +53,7 @@
           disks:
             source: "{{ disk }}"
           network_interfaces:
-          - network: default
+          - network: "{{ network }}"
             access_config:
             - name: External NAT
               nat_ip: "{{ address }}"
