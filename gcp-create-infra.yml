@@ -28,6 +28,17 @@
           state: present
         register: disk
 
+########## create prodmon network ##################
+
+      - name: create a network
+        gcp_compute_network:
+          name: default
+          project: "{{ gcp_project }}"
+          auth_kind: "{{ gcp_account_type }}"
+          service_account_file: "{{ gcp_account_file }}"
+          state: present
+        register: network
+
 ########## create prodmon vm instance ip ##################
 
       - name: create prodmon ip address
@@ -52,12 +63,12 @@
           - auto_delete: 'true'
             boot: 'true'
             source: "{{ disk }}"
-#         network_interfaces:
-#         - network: "{{ network }}"
-#           access_config:
-#           - name: External NAT
-#             nat_ip: "{{ address }}"
-#             type: ONE_TO_ONE_NAT
+          network_interfaces:
+          - network: "{{ network }}"
+            access_config:
+            - name: External NAT
+              nat_ip: "{{ address }}"
+              type: ONE_TO_ONE_NAT
           status: RUNNING
           project: "{{ gcp_project }}"
           zone: "{{ gcp_zone }}"
