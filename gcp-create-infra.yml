@@ -47,17 +47,18 @@
       - name: create prodmon vm instance
         gcp_compute_instance:
           name: prodmon
+          hostname: prodmon
           machine_type: e2-micro
           status: RUNNING
           tags: prodmon
           disks:
             source: "{{ disk }}"
-          network_interfaces:
-          - network: "{{ network }}"
-            access_config:
-            - name: External NAT
-              nat_ip: "{{ address }}"
-              type: ONE_TO_ONE_NAT
+#         network_interfaces:
+#         - network: "{{ network }}"
+#           access_config:
+#           - name: External NAT
+#             nat_ip: "{{ address }}"
+#             type: ONE_TO_ONE_NAT
           project: "{{ gcp_project }}"
           zone: "{{ gcp_zone }}"
           region: "{{ gcp_region }}"
