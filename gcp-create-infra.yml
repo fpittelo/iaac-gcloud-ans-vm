@@ -47,7 +47,7 @@
       - name: create prodmon vm instance
         gcp_compute_instance:
           name: prodmon
-          machine type: e2-micro
+          machine_type: e2-micro
           status: RUNNING
           tags: prodmon
           disks:
