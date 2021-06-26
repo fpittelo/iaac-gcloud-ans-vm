@@ -23,15 +23,16 @@
 #192.168.1.100
 #192.168.1.110
 
-[monitor]
-10.172.10.10
+[all]
+10.172.0.4
 
-[dev]
-10.172.11.10
+[monitor]
+10.172.0.4
 
 [prod]
-10.172.12.10
 
+
+[dev]
 
 # If you have multiple hosts following a pattern you can specify
 # them like this:
