@@ -23,16 +23,19 @@
 #192.168.1.100
 #192.168.1.110
 
-[all]
-10.172.0.4
+[common]
+monitor.fpittelo.ch
+webserver01.fpittelo.ch
+webserver02.fpittelo.ch
 
 [monitor]
-10.172.0.4
+monitor.fpittelo.ch
 
 [prod]
-
+webserver01.fpittelo.ch
 
 [dev]
+webserver02.fpittelo.ch
 
 # If you have multiple hosts following a pattern you can specify
 # them like this:
