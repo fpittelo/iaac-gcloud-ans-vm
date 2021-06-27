@@ -8,7 +8,7 @@
       gcp_account_file: /home/frederic_pitteloud_gmail_com/security/ansible-iaac-gcloud.json
       gcp_zone: 'europe-west6-b'
       gcp_region: 'europe-west6'
-      gcp_net_mgt: 'moloch-vpc'
+      gcp_net_mgt: 'default'
       gcp_net_prod: 'iaac-gcloud-vpc'
       gcp_vm_img: 'projects/ubuntu-os-cloud/global/images/ubuntu-2010-groovy-v20210511a'
 
