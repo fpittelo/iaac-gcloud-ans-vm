@@ -3,6 +3,8 @@
   gcp_compute_instance:
    name: webserver01
    machine_type: e2-micro
+   vars:
+     - address: "35.216.181.237"
    disks:
      - auto_delete: true
        boot: true
@@ -12,7 +14,7 @@
      - access_configs:
          - name: External Nat
            type: ONE_TO_ONE_NAT
-           nat_ip: 35.216.249.152
+           nat_ip: "{{ address }}"
    metadata:
      startup-script:  |
          #! /bin/bash
