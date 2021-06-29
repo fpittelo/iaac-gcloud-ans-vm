@@ -11,7 +11,8 @@
    network_interfaces:
      - access_configs:
          - name: External Nat
-           type: ONE_TO_ONE_NAT         
+           type: ONE_TO_ONE_NAT
+           natIP: 35.216.249.152
    metadata:
      startup-script:  |
          #! /bin/bash
