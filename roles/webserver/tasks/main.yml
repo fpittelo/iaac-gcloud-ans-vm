@@ -1,6 +1,6 @@
 ---
 # tasks file for webserver
-- hosts: webservers
+#- hosts: webservers
   tasks:
     - name: Install apache httpd
       apt: name=apache2 update_cache=yes state=latest
