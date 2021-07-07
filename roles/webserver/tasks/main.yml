@@ -5,3 +5,5 @@
     name: apache2
     state: present
     update_cache: yes
+    become: yes
+    become_user: frederic_pitteloud_gmail_com
