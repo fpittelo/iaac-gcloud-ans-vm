@@ -2,13 +2,13 @@
 - name: Install apache httpd
   apt:
     name: apache2
-    state: present
+    state: absent
     update_cache: yes
 
 - name: Install nginx
   apt:
     name: nginx
-    state: latest
+    state: absent
     update_cache: yes
 
 - name: ufw
