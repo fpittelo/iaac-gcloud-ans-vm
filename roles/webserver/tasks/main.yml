@@ -15,4 +15,4 @@
   apt:
     pkg:
     - ufw
-  state: present
+    state: present
