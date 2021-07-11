@@ -12,7 +12,7 @@
       gcp_net_prod: 'iaac-gcloud-vpc'
       gcp_vm_img: 'projects/ubuntu-os-cloud/global/images/ubuntu-2010-groovy-v20210511a'
 
-  - tasks:
-    name: create vm webserver1
-    roles:
-      - common
+    tasks:
+      - name: create vm webserver1
+        roles:
+            - common
