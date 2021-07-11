@@ -12,5 +12,5 @@
       gcp_net_prod: 'iaac-gcloud-vpc'
       gcp_vm_img: 'projects/ubuntu-os-cloud/global/images/ubuntu-2010-groovy-v20210511a'
 
-  -  roles:
-        - common
+    roles:
+      - role: common
