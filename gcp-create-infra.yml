@@ -14,6 +14,5 @@
       gcp_vm_img: 'projects/ubuntu-os-cloud/global/images/ubuntu-2010-groovy-v20210511a'
 
     tasks:
-    - hosts: common
-      roles:
-        - common
+    roles:
+      - common
