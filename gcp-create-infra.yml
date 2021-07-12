@@ -6,4 +6,5 @@
   tasks:
 
   - name: create webserver
-    roles: common
+    roles:
+    - common
