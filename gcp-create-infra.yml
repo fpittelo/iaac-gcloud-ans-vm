@@ -3,8 +3,7 @@
   connection: local
   gather_facts: no
 
-  tasks:
-
-  - name: create webserver
-    roles:
+- hosts: webserver01
+  become: true
+  roles:
     - common
