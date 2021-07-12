@@ -1,0 +1,65 @@
+- name: Create monitor gcp instance
+  hosts: localhost
+  
+  vars:
+    gcp_project: iaac-gloud-313808
+    gcp_cred_kind: serviceaccount
+    gcp_account_file: /home/frederic_pitteloud_gmail_com/security/ansible-iaac-gcloud.json
+    gcp_zone: 'europe-west6-b'
+    gcp_region: 'europe-west6'
+    gcp_net_mgt: 'default'
+    gcp_net_prod: 'iaac-gcloud-vpc'
+    gcp_vm_img: 'projects/ubuntu-os-cloud/global/images/ubuntu-2010-groovy-v20210511a'
+    gcp_vm_type: 'e2-micro'
+  
+  tasks:
+  
+    - name: create monitor disk
+      gcp_compute_disk:
+        name: monitor-disk
+        size_gb: 10
+        source_image: "{{ gcp_vm_img }}"
+        zone: "{{ europe-west6-b }}"
+        project: "{{ gcp_project }}"
+        auth_kind: "{{ gcp_cred_kind }}"
+        state: present
+      register: disk
+
+    - name: create a  VPC network
+      gcp_compute_network:
+        name: default
+        project: "{{ gcp_project }}"
+        auth_kind: "{{ gcp_cred_kind }}"
+        state: present
+      register: network
+
+    - name: create an IPv4 public IP Address
+      gcp_compute_address:
+        name: create monitor-pub-ip
+        region: "{{ europe-west6 }}"
+        project: "{{ gcp_project }}"
+        auth_kind: "{{ gcp_cred_kind }}"
+        state: present
+      register: address
+
+    - name: create monitor instance
+      gcp_compute_instance:
+        name: monitor
+        machine_type: "{{ gcp_vm_type }}"
+        disks:
+        - auto_delete: 'true'
+          boot: 'true'
+          source: "{{ disk }}"
+        network_interfaces:
+        - network: "{{ network }}"
+          access_configs:
+          - name: External NAT
+            nat_ip: "{{ address }}"
+            type: ONE_TO_ONE_NAT
+        zone: "{{ europe-west6-b }}"
+        project: "{{ gcp_project }}"
+        auth_kind: "{{ gcp_cred_kind }}"
+        state: present
+    - name: Show instance Details
+      debug:
+        msg: "The monitor instance is accessible at {{ address.address }}"
