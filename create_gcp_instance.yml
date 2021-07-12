@@ -19,7 +19,7 @@
         name: monitor-disk
         size_gb: 10
         source_image: "{{ gcp_vm_img }}"
-        zone: "{{ europe-west6-b }}"
+        zone: "{{ gcp_zone }}"
         project: "{{ gcp_project }}"
         auth_kind: "{{ gcp_cred_kind }}"
         state: present
@@ -36,7 +36,7 @@
     - name: create an IPv4 public IP Address
       gcp_compute_address:
         name: create monitor-pub-ip
-        region: "{{ europe-west6 }}"
+        region: "{{ gcp_region }}"
         project: "{{ gcp_project }}"
         auth_kind: "{{ gcp_cred_kind }}"
         state: present
@@ -56,7 +56,7 @@
           - name: External NAT
             nat_ip: "{{ address }}"
             type: ONE_TO_ONE_NAT
-        zone: "{{ europe-west6-b }}"
+        zone: "{{ gcp_zone }}"
         project: "{{ gcp_project }}"
         auth_kind: "{{ gcp_cred_kind }}"
         state: present
