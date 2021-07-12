@@ -3,7 +3,7 @@
   connection: local
   gather_facts: no
 
-- hosts: webserver01
+- hosts: webserver
   become: true
   roles:
     - common
