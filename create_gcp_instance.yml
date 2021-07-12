@@ -11,6 +11,7 @@
     gcp_net_prod: 'iaac-gcloud-vpc'
     gcp_vm_img: 'projects/ubuntu-os-cloud/global/images/ubuntu-2010-groovy-v20210511a'
     gcp_vm_type: 'e2-micro'
+    gcp_net_tier: 'STANDARD'
   
   tasks:
   
@@ -38,6 +39,7 @@
     - name: create monitor public IP Address
       gcp_compute_address:
         name: monitor-pub-ip
+        network_tier: "{{ gcp_net_tier }}"
         region: "{{ gcp_region }}"
         project: "{{ gcp_project }}"
         auth_kind: "{{ gcp_cred_kind }}"
