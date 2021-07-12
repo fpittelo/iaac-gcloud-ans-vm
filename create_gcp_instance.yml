@@ -35,9 +35,9 @@
         state: present
       register: network
 
-    - name: create an IPv4 public IP Address
+    - name: create monitor public IP Address
       gcp_compute_address:
-        name: create monitor-pub-ip
+        name: monitor-pub-ip
         region: "{{ gcp_region }}"
         project: "{{ gcp_project }}"
         auth_kind: "{{ gcp_cred_kind }}"
