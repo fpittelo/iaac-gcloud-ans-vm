@@ -1,7 +1,9 @@
 ---
-- hosts: all
-  become: true
+- hosts: localhost
+  connection: local
+  gather_facts: no
 
-- name: create gcp webserver vm
-  roles:
-    - common
+  tasks:
+
+  - name: create webserver
+    roles: common
