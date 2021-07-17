@@ -1,2 +1,72 @@
 ---
-# tasks file for monitor
+- name: Create monitor gcp instance
+  hosts: localhost
+  
+  vars:
+    gcp_project: iaac-gloud-313808
+    gcp_cred_kind: serviceaccount
+    gcp_account_file: /home/frederic_pitteloud_gmail_com/security/ansible-iaac-gcloud.json
+    gcp_zone: 'europe-west6-b'
+    gcp_region: 'europe-west6'
+    gcp_net_mgt: 'default'
+    gcp_net_prod: 'iaac-gcloud-vpc'
+    gcp_vm_img: 'projects/ubuntu-os-cloud/global/images/ubuntu-2010-groovy-v20210511a'
+    gcp_vm_type: 'e2-micro'
+    gcp_net_tier: 'STANDARD'
+  
+  tasks:
+  
+    - name: create monitor disk
+      gcp_compute_disk:
+        name: monitor-disk
+        size_gb: 10
+        source_image: "{{ gcp_vm_img }}"
+        zone: "{{ gcp_zone }}"
+        project: "{{ gcp_project }}"
+        auth_kind: "{{ gcp_cred_kind }}"
+        service_account_file: "{{ gcp_account_file }}"
+        state: present
+      register: disk
+
+    - name: create a  VPC network
+      gcp_compute_network:
+        name: default
+        project: "{{ gcp_project }}"
+        auth_kind: "{{ gcp_cred_kind }}"
+        service_account_file: "{{ gcp_account_file }}"
+        state: present
+      register: network
+
+    - name: create monitor public IP Address
+      gcp_compute_address:
+        name: monitor-pub-ip
+        region: "{{ gcp_region }}"
+        project: "{{ gcp_project }}"
+        auth_kind: "{{ gcp_cred_kind }}"
+        service_account_file: "{{ gcp_account_file }}"
+        state: present
+      register: address
+
+    - name: create monitor instance
+      gcp_compute_instance:
+        name: monitor
+        machine_type: "{{ gcp_vm_type }}"
+        disks:
+        - auto_delete: 'true'
+          boot: 'true'
+          source: "{{ disk }}"
+        network_interfaces:
+        - network: "{{ network }}"
+          access_configs:
+          - name: External NAT
+            network_tier: "{{ gcp_net_tier }}"
+            nat_ip: "{{ address }}"
+            type: ONE_TO_ONE_NAT
+        zone: "{{ gcp_zone }}"
+        project: "{{ gcp_project }}"
+        auth_kind: "{{ gcp_cred_kind }}"
+        service_account_file: "{{ gcp_account_file }}"
+        state: present
+    - name: Show instance Details
+      debug:
+        msg: "The monitor instance is accessible at {{ address.address }}"

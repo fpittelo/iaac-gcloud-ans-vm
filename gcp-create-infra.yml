@@ -3,7 +3,7 @@
   connection: local
   gather_facts: no
 
-- hosts: webserver
+- name: create monitor vm instance
   become: true
   roles:
-    - common
+    - monitor
