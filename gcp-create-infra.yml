@@ -1,11 +1,10 @@
 ---
-hosts: localhost
-connection: local
-gather_facts: no
+- hosts: localhost
+  gather facts: yes
+  become: true
 
-tasks:
-
-  - name: create monitor vm instance
-    become: true
+  tasks:
+  - name: create monitor
+    hosts: localhost
     roles:
-    - monitor
+      - monitor
