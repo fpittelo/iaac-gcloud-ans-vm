@@ -1,9 +1,9 @@
 ---
-- hosts: localhost
-  connection: local
-  gather_facts: no
+hosts: localhost
+connection: local
+gather_facts: no
 
-  taks:
+tasks:
 
   - name: create monitor vm instance
     become: true
