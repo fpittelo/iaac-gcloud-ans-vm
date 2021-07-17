@@ -5,6 +5,5 @@
 
   tasks:
   - name: create monitor
-    hosts: localhost
     roles:
       - monitor
