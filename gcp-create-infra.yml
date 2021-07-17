@@ -3,7 +3,9 @@
   connection: local
   gather_facts: no
 
--  name: create monitor vm instance
-   become: true
-   roles:
+  taks:
+
+  - name: create monitor vm instance
+    become: true
+    roles:
     - monitor
