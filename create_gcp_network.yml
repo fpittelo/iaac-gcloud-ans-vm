@@ -28,6 +28,6 @@
         region: "{{ gcp_region }}"
         project: "{{ gcp_project }}"
         name: intip-monitor
-        gcp_compute_address: 10.172.0.10
+        address: 10.172.0.10
         auth_kind: "{{ gcp_cred_kind }}"
         service_account_file: "{{ gcp_account_file }}"
