@@ -1,0 +1,22 @@
+---
+
+- name: Create gcp landing zone
+  hosts: localhost
+  
+  vars:
+    gcp_project: iaac-gloud-313808
+    gcp_cred_kind: serviceaccount
+    gcp_account_file: /home/frederic_pitteloud_gmail_com/security/ansible-iaac-gcloud.json
+    gcp_zone: 'europe-west6-b'
+    gcp_region: 'europe-west6'
+    gcp_net_mgt: 'default'
+    gcp_net_prod: 'iaac-gcloud-vpc'
+
+- name: create gcp servers network
+  google.cloud.gcp_compute_network:
+    name: iaac-gloud-servers
+    auto_create_subnetworks: 'true'
+    project: "{{ gcp_project }}"
+    auth_kind: "{{ gcp_cred_kind }}"
+    service_account_file: "{{ gcp_account_file }}"
+    state: present
