@@ -18,5 +18,5 @@
         service_account_file: "{{ gcp_account_file }}"
         parent:
           type: organization
-          id: 636173955921
+          id: '636173955921'
         state: present
