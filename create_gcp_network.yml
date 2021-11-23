@@ -28,7 +28,7 @@
       google.cloud.gcp_compute_subnetwork:
         name: servers-subnet
         region: "{{ gcp_region }}"
-        network: iaac-gloud-servers
+        network: "{{ network }}"
         ip_cidr_range: 10.172.0.20.0/24
         project: "{{ gcp_project }}"
         auth_kind: "{{ gcp_cred_kind }}"
