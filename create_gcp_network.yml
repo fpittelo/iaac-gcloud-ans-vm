@@ -86,7 +86,7 @@
       google.cloud.gcp_compute_address:
         region: "{{ gcp_region }}"
         project: "{{ gcp_project }}"
-        name: intip-monitor
+        name: extip-monitor
         address_type: external
         network_tier: "{gcp_net_tier}"
         auth_kind: "{{ gcp_cred_kind }}"
