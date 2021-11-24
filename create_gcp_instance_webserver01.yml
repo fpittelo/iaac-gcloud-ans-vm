@@ -55,7 +55,7 @@
           boot: 'true'
           source: "{{ disk }}"
         network_interfaces:
-        - network: "{{ network }}"
+        - network: "{{ gcp_net_mgt }}"
           access_configs:
           - name: External NAT
             network_tier: "{{ gcp_net_tier }}"
