@@ -42,6 +42,7 @@
         name: monitor-pub-ip
         region: "{{ gcp_region }}"
         project: "{{ gcp_project }}"
+        network_tier: "{{ gcp_net_tier }}"
         auth_kind: "{{ gcp_cred_kind }}"
         service_account_file: "{{ gcp_account_file }}"
         state: present
