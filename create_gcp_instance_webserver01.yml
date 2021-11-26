@@ -58,7 +58,6 @@
         network_interfaces:
         - network: "{{ gcp_net_mgt }}"
           access_configs:
-          access_configs:
           - name: External NAT
             network_tier: "{{ gcp_net_tier }}"
             nat_ip: "{{ address }}"
