@@ -39,7 +39,7 @@
 
     - name: create monitor public IP Address
       gcp_compute_address:
-        name: monitor-pub-ip
+        name: extip-monitor
         region: "{{ gcp_region }}"
         project: "{{ gcp_project }}"
         network_tier: "{{ gcp_net_tier }}"
