@@ -39,9 +39,9 @@
 
     - name: create monitor internal ip address
       google.cloud.gcp_compute_address:
+        name: intip-monitor
         region: "{{ gcp_region }}"
         project: "{{ gcp_project }}"
-        name: intip-monitor
         address_type: internal
         address: 10.172.0.30
         auth_kind: "{{ gcp_cred_kind }}"
@@ -72,7 +72,7 @@
         - network: "{{ network }}"
           access_configs:
           - name: internal
-          - network_ip: "{{ network }}"
+            network_ip: "{{ network }}"
         - network: "{{ network }}"
           access_configs:
           - name: External NAT
