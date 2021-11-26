@@ -69,7 +69,7 @@
           boot: 'true'
           source: "{{ disk }}"
         network_interfaces:
-        - network: "{{ intip-network }}"
+        - network: "{{ network }}"
           access_configs:
           - name: internal
           - network_ip: "{{ network }}"
