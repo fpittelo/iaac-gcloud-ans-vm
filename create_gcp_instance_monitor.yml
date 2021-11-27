@@ -76,7 +76,7 @@
             nat_ip: "{{ address }}"
             type: ONE_TO_ONE_NAT
           network_ip: "10.172.0.30"
-          subnetwork: "projects/iaac-gloud-313808/regions/europe-west6/subnetworks/default"
+#         subnetwork: "projects/iaac-gloud-313808/regions/europe-west6/subnetworks/default"
         zone: "{{ gcp_zone }}"
         project: "{{ gcp_project }}"
         auth_kind: "{{ gcp_cred_kind }}"
