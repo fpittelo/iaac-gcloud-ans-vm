@@ -62,6 +62,7 @@
             network_tier: "{{ gcp_net_tier }}"
             nat_ip: "{{ address }}"
             type: ONE_TO_ONE_NAT
+          network_ip: "10.172.0.20"
         zone: "{{ gcp_zone }}"
         project: "{{ gcp_project }}"
         auth_kind: "{{ gcp_cred_kind }}"
