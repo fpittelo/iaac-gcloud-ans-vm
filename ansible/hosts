@@ -24,16 +24,16 @@
 #192.168.1.110
 
 [all]
-10.172.0.22
-10.172.0.23
-10.172.0.24
+10.172.0.10
+10.172.0.20
+10.172.0.30
 
 [webservers]
-10.172.0.22
-10.172.0.23
+10.172.0.10
+10.172.0.20
 
 [monitor]
-10.172.0.24
+10.172.0.30
 
 # If you have multiple hosts following a pattern you can specify
 # them like this:
