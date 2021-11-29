@@ -1,9 +1,0 @@
----
-- hosts: localhost
-  gather facts: yes
-  become: true
-
-  tasks:
-  - name: create monitor
-    roles:
-      - monitor
