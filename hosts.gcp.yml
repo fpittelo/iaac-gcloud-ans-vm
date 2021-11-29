@@ -1,3 +1,4 @@
+---
 plugin: gcp_compute
 projects:
   - iaac-gloud
