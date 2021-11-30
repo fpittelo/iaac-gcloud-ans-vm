@@ -1,6 +1,7 @@
 ---
 - name: Create moloch01 gcp instance
   hosts: localhost
+  become: true
   
   vars:
     gcp_project: iaac-gloud-313808
