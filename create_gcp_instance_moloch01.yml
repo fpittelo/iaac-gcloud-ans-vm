@@ -96,3 +96,8 @@
       apt:
         name: python3
         state: present
+
+    - name: Install git
+      apt:
+        name: git
+        state: present
