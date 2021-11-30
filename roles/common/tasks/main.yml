@@ -1,15 +1,32 @@
 ---
+    - name: update
+      apt:
+        update_cache: yes
+
+    - name: upgrade
+      apt:
+        upgrade: yes
+
+    - name: Remove useless packages from the cache
+      apt:
+        autoclean: yes
+
+    - name: Install ufw
+      apt:
+        name: ufw
+        state: present
+
     - name: Install ansible
       apt:
         name: ansible
-        state: present
+        state: absent
 
     - name: Install python3
       apt:
         name: python3
-        state: present
+        state: absent
 
     - name: Install git
       apt:
         name: git
-        state: present
+        state: absent
