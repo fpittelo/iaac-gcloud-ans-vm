@@ -5,7 +5,7 @@
 
     - name: upgrade
       apt:
-        upgrade: yes
+        upgrade: full
 
     - name: Remove useless packages from the cache
       apt:
@@ -24,7 +24,7 @@
     - name: Install python3
       apt:
         name: python3
-        state: absent
+        state: present
 
     - name: Install git
       apt:

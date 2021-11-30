@@ -86,7 +86,3 @@
     - name: Show instance Details
       debug:
         msg: "The monitor instance is accessible at {{ address.address }}"
-
-    - name: Include common role
-      include_role:
-        name: common
