@@ -1,6 +1,6 @@
 ---
 - name: Create moloch01 gcp instance
-  hosts: all
+  hosts: all 
   become: true
 
   tasks:

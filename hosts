@@ -24,6 +24,7 @@
 #192.168.1.110
 
 [all]
+10.172.0.3
 10.172.0.10
 10.172.0.20
 10.172.0.30
@@ -34,6 +35,9 @@
 
 [monitor]
 10.172.0.30
+
+[ansible_test]
+10.172.0.3
 
 # If you have multiple hosts following a pattern you can specify
 # them like this:
