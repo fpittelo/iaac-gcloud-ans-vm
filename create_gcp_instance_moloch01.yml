@@ -1,7 +1,8 @@
 ---
 - name: Create moloch01 gcp instance
   hosts: localhost
-  roles: common
+  roles:
+    - common
   become: true
   
   vars:
