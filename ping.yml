@@ -1,5 +1,5 @@
 ---
-- name: Create moloch01 gcp instance
+- name: ping all
   hosts: all 
   become: true
 
