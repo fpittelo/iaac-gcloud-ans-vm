@@ -1,0 +1,9 @@
+---
+- name: Create moloch01 gcp instance
+  hosts: all
+  become: true
+
+  tasks:
+
+    - name: ping all servers
+      ansible.builtin.ping:
