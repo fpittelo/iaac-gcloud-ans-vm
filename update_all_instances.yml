@@ -23,7 +23,7 @@
 
 
 - name: install webservers packages
-  hosts: weberservers
+  hosts: webservers
   become: true
 
   tasks:
