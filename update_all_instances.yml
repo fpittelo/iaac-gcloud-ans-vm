@@ -20,3 +20,15 @@
 #   - name: Upgrade the OS (apt-get dist-upgrade)
 #     apt:
 #       upgrade: dist
+
+
+- name: install webservers packages
+  hosts: weberservers
+  become: true
+
+  tasks:
+
+    - name: Install Apache
+      apt:
+        name: apache2
+        state: present
