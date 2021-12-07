@@ -5,7 +5,7 @@
 
   tasks:
 
-    - name: Run the equivalent of "apt-get update" as a separate step
+    - name: apt-get update on all hosts
       apt:
         update_cache: yes
     
@@ -17,6 +17,6 @@
       apt:
         autoremove: yes
 
-    - name: Upgrade the OS (apt-get dist-upgrade)
-      apt:
-        upgrade: dist
+#   - name: Upgrade the OS (apt-get dist-upgrade)
+#     apt:
+#       upgrade: dist
