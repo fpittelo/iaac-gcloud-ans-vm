@@ -1,6 +1,6 @@
 ---
 - name: update all instances
-  hosts: monitor
+  hosts: all
   become: true
 
   tasks:
