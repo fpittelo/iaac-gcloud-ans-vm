@@ -24,11 +24,9 @@
 #192.168.1.110
 
 [all]
-35.216.206.37
-35.216.219.21
+35.216.241.236
 35.216.151.132
 35.216.209.53
-35.216.241.236
 
 [webservers]
 35.216.151.132
@@ -36,13 +34,6 @@
 
 [monitor]
 35.216.241.236
-
-[moloch]
-35.216.206.37
-
-[moloch01]
-35.216.219.21
-
 
 # If you have multiple hosts following a pattern you can specify
 # them like this:
