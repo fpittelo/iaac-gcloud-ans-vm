@@ -18,6 +18,11 @@
         name: apache2
         state: present
 
+    - name: Start service httpd, if not running
+      service:
+        name: httpd
+        state: started
+
 ############## Clean up tasks #################################
 
     - name: Remove useless packages from the cache
