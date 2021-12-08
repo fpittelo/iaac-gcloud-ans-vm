@@ -1,6 +1,6 @@
 ---
-- name: publish website
-  hosts: webserver02
+- name: publish website on webservers
+  hosts: webservers
   become: true
 
   tasks:
