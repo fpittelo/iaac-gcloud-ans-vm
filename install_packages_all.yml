@@ -1,0 +1,33 @@
+---
+- name: install packages common to all servers
+  hosts: all
+  become: true
+
+############## installation tasks #################################
+
+  tasks:
+
+    - name: install ufw
+      apt:
+        name: ufw
+        state: present
+    
+    - name: install net-tools
+      apt:
+        name: net-tools
+        state: present
+
+    - name: install git
+      apt:
+        name: git
+        state: present
+
+############## Clean up tasks #################################
+
+    - name: Remove useless packages from the cache
+      apt:
+        autoclean: yes
+
+    - name: Remove dependencies that are no longer required
+      apt:
+        autoremove: yes
