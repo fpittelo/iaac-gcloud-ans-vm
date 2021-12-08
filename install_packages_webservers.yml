@@ -20,7 +20,7 @@
 
     - name: Start service httpd, if not started
       ansible.builtin.service:
-        name: httpd
+        name: apache2
         state: started
 
 ############## Clean up tasks #################################
