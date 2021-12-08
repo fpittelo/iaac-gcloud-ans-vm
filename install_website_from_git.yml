@@ -14,5 +14,5 @@
   - name: Git website checkout
     ansible.builtin.git:
       repo: 'https://github.com/fpittelo/website.git'
-      dest: /var/www/
+      dest: /var/www/website
 #     version: release-0.22
