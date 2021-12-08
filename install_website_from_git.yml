@@ -1,0 +1,13 @@
+---
+---
+- name: publish website
+  hosts: webserver02
+  become: true
+
+  tasks:
+
+- name: Git website checkout
+  ansible.builtin.git:
+    repo: 'https://github.com/fpittelo/website.git'
+    dest: /var/www/
+#   version: release-0.22
