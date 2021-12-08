@@ -3,9 +3,15 @@
   hosts: all
   become: true
 
-############## installation tasks #################################
-
   tasks:
+
+############## update all         ##############################
+
+    - name: apt-get update on all hosts
+      apt:
+        update_cache: yes
+
+############## installation tasks ##############################
 
     - name: install ufw
       apt:
