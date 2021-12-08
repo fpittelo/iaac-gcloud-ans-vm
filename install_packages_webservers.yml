@@ -18,8 +18,8 @@
         name: apache2
         state: present
 
-    - name: Start service httpd, if not running
-      service:
+    - name: Start service httpd, if not started
+      ansible.builtin.service:
         name: httpd
         state: started
 
