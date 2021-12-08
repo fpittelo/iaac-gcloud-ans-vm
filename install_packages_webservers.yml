@@ -18,6 +18,11 @@
         name: apache2
         state: present
 
+    - name: Enable service httpd, and not touch the state
+      ansible.builtin.service:
+        name: apache2
+        enabled: yes
+
     - name: Start service httpd, if not started
       ansible.builtin.service:
         name: apache2
