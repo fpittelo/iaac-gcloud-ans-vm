@@ -5,6 +5,12 @@
 
   tasks:
 
+  - name: Create website directory
+    ansible.builtin.file:
+      path: /var/www/website
+      state: directory
+      mode: '0755'
+
   - name: Git website checkout
     ansible.builtin.git:
       repo: 'https://github.com/fpittelo/website.git'
