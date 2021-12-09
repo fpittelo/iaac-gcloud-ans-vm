@@ -35,6 +35,9 @@
 [monitor]
 35.216.241.236
 
+[automate]
+
+
 # If you have multiple hosts following a pattern you can specify
 # them like this:
 
