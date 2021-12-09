@@ -23,10 +23,14 @@
         url: http://pkg.jenkins-ci.org/debian-stable-rc/jenkins-ci.org.key
         state: present
 
-    - name: Add Jenkins Repository
-      ansible.builtin.apt_repository:
-        repo: deb http://pkg.jenkins-ci.org/debian-stable-rc
-        state: present
+    - name: moloch hosts file to all hosts
+      ansible.builtin.copy:
+        src: /etc/apt/sources.list.d/jenkins.list
+        dest: /etc/apt/sources.list.d/jenkins.list
+        owner: root
+        group: root
+        mode: '0644'
+        backup: yes
 
     - name: apt-get update on all hosts
       apt:
