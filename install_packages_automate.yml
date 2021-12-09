@@ -25,7 +25,7 @@
 
     - name: Add Jenkins Repository
       ansible.builtin.apt_repository:
-        repo: deb deb http://pkg.jenkins-ci.org/debian-stable-rc
+        repo: deb http://pkg.jenkins-ci.org/debian-stable-rc
         state: present
 
     - name: apt-get update on all hosts
