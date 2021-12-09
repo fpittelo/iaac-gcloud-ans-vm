@@ -18,12 +18,16 @@
         name: openjdk-8-jre
         state: present
 
-    - name: Add Jenkins signing key
-      ansible.builtin.apt_key:
-        url: http://pkg.jenkins-ci.org/debian-stable-rc/jenkins-ci.org.key
-        state: present
+    - name: copy jenkins key to automate
+      ansible.builtin.copy:
+        src: /usr/share/keyrings/jenkins-keyring.asc
+        dest: /usr/share/keyrings/jenkins-keyring.asc
+        owner: root
+        group: root
+        mode: '0644'
+        backup: yes
 
-    - name: moloch hosts file to all hosts
+    - name: copy source list to automate
       ansible.builtin.copy:
         src: /etc/apt/sources.list.d/jenkins.list
         dest: /etc/apt/sources.list.d/jenkins.list
