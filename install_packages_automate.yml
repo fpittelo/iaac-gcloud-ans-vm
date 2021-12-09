@@ -1,6 +1,6 @@
 ---
 - name: install packages common to all servers
-  hosts: webservers
+  hosts: automate
   become: true
 
   tasks:
