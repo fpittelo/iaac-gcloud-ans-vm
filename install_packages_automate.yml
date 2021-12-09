@@ -18,14 +18,19 @@
         name: openjdk-8-jre
         state: present
 
-    - name: ensure the jenkins apt repository key is installed
-      apt_key: url=https://pkg.jenkins.io/debian-stable/jenkins.io.key
-      state: present
-
-    - name: ensure the repository is configured
-      ansible.builtin.apt_repository:
-        repo: deb-src 'https://pkg.jenkins.io/debian-stable binary/'
+    - name: Add Jenkins signing key
+      ansible.builtin.apt_key:
+        url: http://pkg.jenkins-ci.org/debian-stable-rc/jenkins-ci.org.key
         state: present
+
+    - name: Add Jenkins Repository
+      ansible.builtin.apt_repository:
+        repo: deb deb http://pkg.jenkins-ci.org/debian-stable-rc binary/
+        state: present
+
+    - name: apt-get update on all hosts
+      apt:
+        update_cache: yes
 
     - name: Install jenkins
       apt:
