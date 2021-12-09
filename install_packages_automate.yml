@@ -1,0 +1,45 @@
+---
+- name: install packages common to all servers
+  hosts: webservers
+  become: true
+
+  tasks:
+
+############## update all         ##############################
+
+    - name: apt-get update on all hosts
+      apt:
+        update_cache: yes
+
+############## installation tasks ##############################
+
+    - name: install open-jdk
+      apt:
+        name: java-11-openjdk-devel
+        state: present
+
+    - name: Install jenkins
+      apt:
+        name: jenkins
+        state: present
+
+    - name: Enable service jenkins, and not touch the state
+      ansible.builtin.service:
+        name: jenkins
+        enabled: yes
+
+    - name: Start service jenkins, if not started
+      ansible.builtin.service:
+        name: jenkins
+        state: started
+
+############## Clean up tasks #################################
+
+    - name: Remove useless packages from the cache
+      apt:
+        autoclean: yes
+
+    - name: Remove dependencies that are no longer required
+      apt:
+        autoremove: yes
+
