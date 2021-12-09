@@ -15,7 +15,7 @@
 
     - name: install open-jdk
       apt:
-        name: java-11-openjdk-devel
+        name: openjdk-8-jre
         state: present
 
     - name: Install jenkins
