@@ -1,0 +1,9 @@
+---
+- name: shutdown all vm instance
+  hosts: all
+
+  tasks:
+
+    - name: shutdown automate vm instance
+      gcp_compute_instance:
+        status: TERMINATED
