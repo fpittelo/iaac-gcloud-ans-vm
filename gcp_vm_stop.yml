@@ -8,6 +8,8 @@
     gcp_account_file: /home/ansible/security/ansible-iaac-gcloud.json
     gcp_zone: 'europe-west6-b'
     gcp_region: 'europe-west6'
+    gcp_vm_type: 'e2-micro'
+    machine_type: "{{ gcp_vm_type }}"
 
   tasks:
 
@@ -19,4 +21,5 @@
         region: "{{ gcp_region }}"
         auth_kind: "{{ gcp_cred_kind }}"
         service_account_file: "{{ gcp_account_file }}"
+        state: present
         status: TERMINATED
