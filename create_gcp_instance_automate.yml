@@ -83,7 +83,7 @@
         auth_kind: "{{ gcp_cred_kind }}"
         service_account_file: "{{ gcp_account_file }}"
         state: present
-        status: running
+        status: RUNNING
     - name: Show instance Details
       debug:
         msg: "The automate instance is accessible at {{ address.address }}"
