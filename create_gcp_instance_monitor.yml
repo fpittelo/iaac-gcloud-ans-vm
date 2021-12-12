@@ -66,7 +66,8 @@
         name: monitor
         machine_type: "{{ gcp_vm_type }}"
         labels:
-          environment: production
+          all: prod
+          monitor: prod
         disks:
         - auto_delete: 'true'
           boot: 'true'
