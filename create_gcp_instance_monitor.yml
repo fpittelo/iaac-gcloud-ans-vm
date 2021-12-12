@@ -65,6 +65,8 @@
       gcp_compute_instance:
         name: monitor
         machine_type: "{{ gcp_vm_type }}"
+        labels:
+          environment: production
         disks:
         - auto_delete: 'true'
           boot: 'true'
