@@ -4,7 +4,7 @@
   vars:
     gcp_project: iaac-333811
     gcp_cred_kind: serviceaccount
-    gcp_account_file: /home/frederic_pitteloud_gmail_com/security/ansible-iaac-gcloud.json
+    gcp_account_file: /home/ansible/security/ansible-iaac-gcloud.json
     gcp_zone: 'europe-west6-b'
     gcp_region: 'europe-west6'
     gcp_net_mgt: 'default'
@@ -65,6 +65,9 @@
           network_ip: "10.172.0.10"
         zone: "{{ gcp_zone }}"
         project: "{{ gcp_project }}"
+        labels:
+          all: prod
+          webservers: prod
         auth_kind: "{{ gcp_cred_kind }}"
         service_account_file: "{{ gcp_account_file }}"
         state: present
