@@ -11,12 +11,27 @@
       apt:
         update_cache: yes
 
-############## installation tasks ##############################
+############## install GIT #################################
 
-    - name: install open-jdk
+    - name: install git
       apt:
-        name: openjdk-8-jre
+        name: git
+
+############## Install Ansible ##############################
+
+    - name: Install Ansible
+      apt:
+        name: ansible
         state: present
+
+############## install Open-JDK ##############################
+
+    - name: Install open-jdk
+      apt:
+        name: openjdk-11-jdk
+        state: present
+
+############## install Jenkins #################################
 
     - name: copy jenkins key to automate
       ansible.builtin.copy:
