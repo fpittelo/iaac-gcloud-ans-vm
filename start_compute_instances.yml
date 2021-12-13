@@ -1,5 +1,5 @@
 ---
-- name: Start VM instances
+- name: Start all vm instances
   hosts: localhost
   
   vars:
