@@ -1,0 +1,58 @@
+---
+- name: Start VM instances
+  hosts: localhost
+  
+  vars:
+    gcp_project: iaac-333811
+    gcp_cred_kind: serviceaccount
+    gcp_account_file: /home/ansible/security/ansible-iaac-gcloud.json
+    gcp_zone: 'europe-west6-b'
+    gcp_region: 'europe-west6'
+    gcp_net_mgt: 'default'
+    gcp_net_prod: 'iaac-gcloud-vpc'
+    gcp_vm_img: 'projects/ubuntu-os-cloud/global/images/ubuntu-2010-groovy-v20210511a'
+#   gcp_vm_img: 'projects/iaac-333811/global/machineImages/img-tpl-01'
+    gcp_vm_type: 'e2-micro'
+    gcp_net_tier: 'STANDARD'
+  
+  tasks:
+
+    - name: Start automate instance
+      gcp_compute_instance:
+        project: "{{ gcp_project }}"
+        zone: "{{ gcp_zone }}"
+        name: automate
+        machine_type: "{{ gcp_vm_type }}"
+        auth_kind: "{{ gcp_cred_kind }}"
+        service_account_file: "{{ gcp_account_file }}"
+        status: TERMINATED
+
+    - name: Start monitor instance
+      gcp_compute_instance:
+        project: "{{ gcp_project }}"
+        zone: "{{ gcp_zone }}"
+        name: monitor
+        machine_type: "{{ gcp_vm_type }}"
+        auth_kind: "{{ gcp_cred_kind }}"
+        service_account_file: "{{ gcp_account_file }}"
+        status: TERMINATED
+
+    - name: Start weberser01 instance
+      gcp_compute_instance:
+        project: "{{ gcp_project }}"
+        zone: "{{ gcp_zone }}"
+        name: webserver01
+        machine_type: "{{ gcp_vm_type }}"
+        auth_kind: "{{ gcp_cred_kind }}"
+        service_account_file: "{{ gcp_account_file }}"
+        status: TERMINATED
+
+    - name: Start webserver02 instance
+      gcp_compute_instance:
+        project: "{{ gcp_project }}"
+        zone: "{{ gcp_zone }}"
+        name: webserver02
+        machine_type: "{{ gcp_vm_type }}"
+        auth_kind: "{{ gcp_cred_kind }}"
+        service_account_file: "{{ gcp_account_file }}"
+        status: TERMINATED
