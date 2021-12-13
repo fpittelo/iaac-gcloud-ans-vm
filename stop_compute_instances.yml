@@ -17,7 +17,7 @@
   
   tasks:
 
-    - name: Start automate instance
+    - name: Stop automate instance
       gcp_compute_instance:
         project: "{{ gcp_project }}"
         zone: "{{ gcp_zone }}"
@@ -27,7 +27,7 @@
         service_account_file: "{{ gcp_account_file }}"
         status: TERMINATED
 
-    - name: Start monitor instance
+    - name: Stop monitor instance
       gcp_compute_instance:
         project: "{{ gcp_project }}"
         zone: "{{ gcp_zone }}"
@@ -37,7 +37,7 @@
         service_account_file: "{{ gcp_account_file }}"
         status: TERMINATED
 
-    - name: Start weberser01 instance
+    - name: Stop weberser01 instance
       gcp_compute_instance:
         project: "{{ gcp_project }}"
         zone: "{{ gcp_zone }}"
@@ -47,7 +47,7 @@
         service_account_file: "{{ gcp_account_file }}"
         status: TERMINATED
 
-    - name: Start webserver02 instance
+    - name: Stop webserver02 instance
       gcp_compute_instance:
         project: "{{ gcp_project }}"
         zone: "{{ gcp_zone }}"
