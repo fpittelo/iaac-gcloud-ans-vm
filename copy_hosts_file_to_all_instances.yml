@@ -1,0 +1,15 @@
+---
+- name: update all instances
+  hosts: all
+  become: true
+
+  tasks:
+
+    - name: moloch hosts file to all hosts
+      ansible.builtin.copy:
+        src: /etc/hosts
+        dest: /etc/hosts
+        owner: root
+        group: root
+        mode: '0644'
+        backup: yes

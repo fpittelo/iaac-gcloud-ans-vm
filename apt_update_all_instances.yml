@@ -17,15 +17,6 @@
       apt:
         autoremove: yes
 
-    - name: moloch hosts file to all hosts
-      ansible.builtin.copy:
-        src: /etc/hosts
-        dest: /etc/hosts
-        owner: root
-        group: root
-        mode: '0644'
-        backup: yes
-
 #   - name: Upgrade the OS (apt-get dist-upgrade)
 #     apt:
 #       upgrade: dist
