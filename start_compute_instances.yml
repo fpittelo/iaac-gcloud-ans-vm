@@ -20,6 +20,7 @@
     - name: Start Compute Instances
       gcp_compute_instance:
         name: automate
+        machine_type: "{{ gcp_vm_type }}"
         status: RUNNING
         zone: "{{ gcp_zone }}"
         auth_kind: "{{ gcp_cred_kind }}"
