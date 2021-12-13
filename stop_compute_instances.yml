@@ -37,7 +37,7 @@
         service_account_file: "{{ gcp_account_file }}"
         status: TERMINATED
 
-    - name: Stop weberser01 instance
+    - name: Stop webserver01 instance
       gcp_compute_instance:
         project: "{{ gcp_project }}"
         zone: "{{ gcp_zone }}"
