@@ -18,6 +18,6 @@
   tasks:
 
     - name: Start Compute Instances
-      gcp_compute_instances:
+      gcp_compute_instance:
         name: automate
         status: RUNNING
