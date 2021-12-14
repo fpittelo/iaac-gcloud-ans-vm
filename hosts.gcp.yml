@@ -1,6 +1,0 @@
----
-plugin: gcp_compute
-projects:
-  - iaac-gloud-313808
-auth_kind: serviceaccount
-service_account_file: /home/ansible/security/ansible-iaac-gcloud.json
