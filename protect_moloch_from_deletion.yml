@@ -1,5 +1,5 @@
 ---
-- name: Start all vm instances
+- name: Protect Moloch From Deletion
   hosts: localhost
   
   vars:
@@ -17,10 +17,12 @@
   
   tasks:
 
-    - name: Start automate instance
+    - name: Protect Moloch From Deletion
       gcp_compute_instance:
         name: moloch
         deletionProtection: true
         project: "{{ gcp_project }}"
         zone: "{{ gcp_zone }}"
         machine_type: "{{ gcp_vm_type }}"
+        auth_kind: "{{ gcp_cred_kind }}"
+        service_account_file: "{{ gcp_account_file }}"
