@@ -20,7 +20,7 @@
     - name: Protect Moloch From Deletion
       gcp_compute_instance:
         name: moloch
-        deletionProtection: true
+        deletion_protection: yes
         project: "{{ gcp_project }}"
         zone: "{{ gcp_zone }}"
         machine_type: "{{ gcp_vm_type }}"
