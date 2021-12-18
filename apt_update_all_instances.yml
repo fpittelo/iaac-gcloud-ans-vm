@@ -6,6 +6,7 @@
   tasks:
 
     - name: apt-get update on all hosts
+      check_mode: no
       apt:
         update_cache: yes
     
