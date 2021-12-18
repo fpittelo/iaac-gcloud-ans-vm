@@ -1,9 +1,9 @@
 pipeline {
     agent any 
     stages {
-        stage('Static Analysis') {
+        stage('test update all playbook') {
             steps {
-                echo 'Run the static analysis to the code' 
+                echo 'test running' 
             }
         }
         stage('Compile') {
