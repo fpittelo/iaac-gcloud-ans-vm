@@ -6,10 +6,10 @@
   tasks:
 
     - name: apt-get update on all hosts
-      check_mode: no
       apt:
         update_cache: yes
-    
+      check_mode: no
+
     - name: Remove useless packages from the cache
       apt:
         autoclean: yes
