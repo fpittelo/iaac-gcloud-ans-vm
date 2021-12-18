@@ -8,7 +8,7 @@
     - name: apt-get update on all hosts
       apt:
         update_cache: yes
-      check_mode: no
+      changed_when: False
 
     - name: Remove useless packages from the cache
       apt:
