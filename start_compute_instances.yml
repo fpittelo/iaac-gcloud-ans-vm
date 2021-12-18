@@ -29,7 +29,7 @@
         status: RUNNING
 
     - name: Start monitor instance
-      check_mode: no
+      changed_when: False
       gcp_compute_instance:
         project: "{{ gcp_project }}"
         zone: "{{ gcp_zone }}"
@@ -40,7 +40,7 @@
         status: RUNNING
 
     - name: Start weberser01 instance
-      check_mode: no
+      changed_when: False
       gcp_compute_instance:
         project: "{{ gcp_project }}"
         zone: "{{ gcp_zone }}"
@@ -51,7 +51,7 @@
         status: RUNNING
 
     - name: Start webserver02 instance
-      check_mode: no
+      changed_when: False
       gcp_compute_instance:
         project: "{{ gcp_project }}"
         zone: "{{ gcp_zone }}"
