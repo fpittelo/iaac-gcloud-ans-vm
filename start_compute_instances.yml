@@ -57,7 +57,7 @@
         service_account_file: "{{ gcp_account_file }}"
         status: RUNNING
 
-################ import_playbooks #######################
+################ import_playbooks ######################
 
 - name: update all machines
   import_playbook: install_packages_all.yml
