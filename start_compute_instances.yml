@@ -18,8 +18,8 @@
   tasks:
 
     - name: Start automate instance
+      changed_when: False
       gcp_compute_instance:
-        changed_when: False
         project: "{{ gcp_project }}"
         zone: "{{ gcp_zone }}"
         name: automate
