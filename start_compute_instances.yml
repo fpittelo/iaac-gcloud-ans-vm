@@ -18,7 +18,6 @@
   tasks:
 
     - name: Start automate instance
-      changed_when: False
       gcp_compute_instance:
         project: "{{ gcp_project }}"
         zone: "{{ gcp_zone }}"
@@ -29,7 +28,6 @@
         status: RUNNING
 
     - name: Start monitor instance
-      changed_when: False
       gcp_compute_instance:
         project: "{{ gcp_project }}"
         zone: "{{ gcp_zone }}"
@@ -40,7 +38,6 @@
         status: RUNNING
 
     - name: Start weberser01 instance
-      changed_when: False
       gcp_compute_instance:
         project: "{{ gcp_project }}"
         zone: "{{ gcp_zone }}"
@@ -51,7 +48,6 @@
         status: RUNNING
 
     - name: Start webserver02 instance
-      changed_when: False
       gcp_compute_instance:
         project: "{{ gcp_project }}"
         zone: "{{ gcp_zone }}"
@@ -60,6 +56,12 @@
         auth_kind: "{{ gcp_cred_kind }}"
         service_account_file: "{{ gcp_account_file }}"
         status: RUNNING
+
+################ pause ######################
+
+- name: Pause for 15 seconds for instances start
+  pause:
+    seconds: 15
 
 ################ import_playbooks ######################
 
