@@ -5,12 +5,6 @@
 
   tasks:
 
-############## update all         ##############################
-
-    - name: apt-get update on all hosts
-      apt:
-        update_cache: yes
-
 ############## installation tasks ##############################
 
     - name: install ufw
@@ -27,13 +21,3 @@
       apt:
         name: git
         state: present
-
-############## Clean up tasks #################################
-
-    - name: Remove useless packages from the cache
-      apt:
-        autoclean: yes
-
-    - name: Remove dependencies that are no longer required
-      apt:
-        autoremove: yes

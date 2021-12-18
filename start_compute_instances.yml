@@ -59,7 +59,7 @@
 
 ################ import_playbooks ######################
 
-- name: update all machines
+- name: install packages for all machines
   import_playbook: install_packages_all.yml
 
 - name: update all machines
