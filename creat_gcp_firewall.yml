@@ -1,0 +1,35 @@
+---
+- name: Start all vm instances
+  hosts: localhost
+  
+  vars:
+    gcp_project: iaac-333811
+    gcp_cred_kind: serviceaccount
+    gcp_account_file: /home/ansible/security/ansible-iaac-gcloud.json
+    gcp_zone: 'europe-west6-b'
+    gcp_region: 'europe-west6'
+    gcp_net_mgt: 'default'
+    gcp_net_prod: 'iaac-gcloud-vpc'
+    gcp_vm_img: 'projects/ubuntu-os-cloud/global/images/ubuntu-2010-groovy-v20210511a'
+#   gcp_vm_img: 'projects/iaac-333811/global/machineImages/img-tpl-01'
+    gcp_vm_type: 'e2-micro'
+    gcp_net_tier: 'STANDARD'
+  
+  tasks:
+
+    - name: create a firewall
+      google.cloud.gcp_compute_firewall:
+        name: test_object
+        allowed:
+        - ip_protocol: tcp
+          ports:
+          - '23'
+        target_tags:
+        - test-ssh-server
+        - staging-ssh-server
+        source_tags:
+        - test-ssh-clients
+        project: "{{ gcp_project }}"
+        auth_kind: "{{ gcp_cred_kind }}"
+        service_account_file: "{{ gcp_account_file }}"
+        state: present
