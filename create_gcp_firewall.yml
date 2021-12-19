@@ -18,7 +18,7 @@
   tasks:
 
     - name: create a firewall
-      google.cloud.gcp_compute_firewall:
+      gcp_compute_firewall:
         name: test_object
         allowed:
         - ip_protocol: tcp
