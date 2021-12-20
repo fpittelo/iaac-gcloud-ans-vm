@@ -13,6 +13,7 @@
     gcp_vm_img: 'projects/ubuntu-os-cloud/global/images/ubuntu-2010-groovy-v20210511a'
 #   gcp_vm_img: 'projects/iaac-333811/global/machineImages/img-tpl-01'
     gcp_vm_type: 'e2-micro'
+    gcp_vm_type_2: 'e2-small'
     gcp_net_tier: 'STANDARD'
   
   tasks:
@@ -64,7 +65,7 @@
     - name: create automate instance
       gcp_compute_instance:
         name: automate
-        machine_type: "{{ gcp_vm_type }}"
+        machine_type: "{{ gcp_vm_type_2 }}"
         disks:
         - auto_delete: 'true'
           boot: 'true'
