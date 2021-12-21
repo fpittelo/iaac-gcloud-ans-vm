@@ -10,7 +10,6 @@
     - name: create external ip
       gcp_compute_address:
         name: 'extip-test01'
-        address: 35.216.151.135
         region: "{{ gcp_region }}"
         address_type: "{{ gcp_net_ext }}"
         network_tier: "{{ gcp_net_tier }}"
