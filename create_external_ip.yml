@@ -9,7 +9,7 @@
 
     - name: create external ip
       gcp_compute_address:
-        address: '35.216.151.132'
+        address: '35.216.151.135'
         name: 'extip-test01'
         project: "{{ gcp_project }}"
         region: "{{ gcp_region }}"
