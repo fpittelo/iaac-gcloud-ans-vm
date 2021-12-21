@@ -11,7 +11,7 @@
     google.cloud.gcp_compute_disk:
       name: test01
       size_gb: 10
-      source_image: projects/ubuntu-os-cloud/global/images/family/ubuntu-1604-lts
+      source_image: "{{ gcp_vm_img }}"
       zone: "{{ gcp_zone }}"
       project: "{{ gcp_project }}"
       auth_kind: "{{ gcp_cred_kind }}"
