@@ -1,0 +1,42 @@
+---
+- name: Create test01 instance
+  hosts: localhost
+  
+  vars_files:
+    - /home/ansible/iaac-gcloud/vars/vars_global.yml
+  
+  tasks:
+
+  - name: create test01 disk
+    google.cloud.gcp_compute_disk:
+      name: test01
+      size_gb: 10
+      source_image: projects/ubuntu-os-cloud/global/images/family/ubuntu-1604-lts
+      zone: "{{ gcp_zone }}"
+      project: "{{ gcp_project }}"
+      auth_kind: "{{ gcp_cred_kind }}"
+      service_account_file: "{{ gcp_account_file }}"
+      state: present
+    register: disk
+
+  - name: create a instance
+    gcp_compute_instance:
+      name: test01
+      machine_type: "{{ gcp_vm_type }}"
+      disks:
+      - auto_delete: 'true'
+        boot: 'true'
+        source: "{{ disk }}"
+      labels:
+        environment: pro
+      network_interfaces:
+      - network: "{{ network }}"
+        access_configs:
+        - name: External NAT
+          nat_ip: "{{ address }}"
+          type: ONE_TO_ONE_NAT
+      zone: us-central1-a
+      project: test_project
+      auth_kind: serviceaccount
+      service_account_file: "/tmp/auth.pem"
+      state: present
