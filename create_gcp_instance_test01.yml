@@ -8,7 +8,7 @@
   tasks:
 
     - name: create test01 disk
-      google.cloud.gcp_compute_disk:
+      gcp_compute_disk:
         name: test01
         size_gb: 10
         source_image: "{{ gcp_vm_img }}"
