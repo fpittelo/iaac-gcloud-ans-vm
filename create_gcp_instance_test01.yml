@@ -7,38 +7,38 @@
   
   tasks:
 
-  - name: create test01 disk
-    google.cloud.gcp_compute_disk:
-      name: test01
-      size_gb: 10
-      source_image: "{{ gcp_vm_img }}"
-      zone: "{{ gcp_zone }}"
-      project: "{{ gcp_project }}"
-      auth_kind: "{{ gcp_cred_kind }}"
-      service_account_file: "{{ gcp_account_file }}"
-      state: present
-    register: disk
+    - name: create test01 disk
+      google.cloud.gcp_compute_disk:
+        name: test01
+        size_gb: 10
+        source_image: "{{ gcp_vm_img }}"
+        zone: "{{ gcp_zone }}"
+        project: "{{ gcp_project }}"
+        auth_kind: "{{ gcp_cred_kind }}"
+        service_account_file: "{{ gcp_account_file }}"
+        state: present
+      register: disk
 
-  - name: create test01 instance
-    gcp_compute_instance:
-      name: test01
-      machine_type: "{{ gcp_vm_type }}"
-      disks:
-      - auto_delete: 'true'
-        boot: 'true'
-        source: "{{ disk }}"
-      labels:
-        environment: prod
-      network_interfaces:
-      - network: "{{ gcp_net_mgt }}"
-        access_configs:
-        - name: External NAT
-          network_tier: "{{ gcp_net_tier }}"
-          nat_ip: "{{ extip-test01 }}"
-          type: ONE_TO_ONE_NAT
-        network_ip: "10.172.0.60"
-      zone: "{{ gcp_zone }}"
-      project: "{{ gcp_project }}"
-      auth_kind: "{{ gcp_cred_kind }}"
-      service_account_file: "{{ gcp_account_file }}"
-      state: present
+    - name: create test01 instance
+      gcp_compute_instance:
+        name: test01
+        machine_type: "{{ gcp_vm_type }}"
+        disks:
+        - auto_delete: 'true'
+          boot: 'true'
+          source: "{{ disk }}"
+        labels:
+          environment: prod
+        network_interfaces:
+        - network: "{{ gcp_net_mgt }}"
+          access_configs:
+          - name: External NAT
+            network_tier: "{{ gcp_net_tier }}"
+            nat_ip: "{{ extip-test01 }}"
+            type: ONE_TO_ONE_NAT
+          network_ip: "10.172.0.60"
+        zone: "{{ gcp_zone }}"
+        project: "{{ gcp_project }}"
+        auth_kind: "{{ gcp_cred_kind }}"
+        service_account_file: "{{ gcp_account_file }}"
+        state: present
