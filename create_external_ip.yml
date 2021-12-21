@@ -7,11 +7,12 @@
 
   tasks:
 
-  gcp_compute_address:
-    name: 'extip-test01'
-    project: "{{ gcp_project }}"
-    region: "{{ gcp_region }}"
-    zone: "{{ gcp_zone }}"
-    auth_kind: "{{ gcp_cred_kind }}"
-    service_account_file: "{{ gcp_account_file }}"
-    state: present
+    - name: create external ip
+      gcp_compute_address:
+        name: 'extip-test01'
+        project: "{{ gcp_project }}"
+        region: "{{ gcp_region }}"
+        zone: "{{ gcp_zone }}"
+        auth_kind: "{{ gcp_cred_kind }}"
+        service_account_file: "{{ gcp_account_file }}"
+        state: present
