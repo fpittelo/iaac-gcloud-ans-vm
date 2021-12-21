@@ -19,7 +19,7 @@
       state: present
     register: disk
 
-  - name: create a instance
+  - name: create test01 instance
     gcp_compute_instance:
       name: test01
       machine_type: "{{ gcp_vm_type }}"
@@ -28,15 +28,15 @@
         boot: 'true'
         source: "{{ disk }}"
       labels:
-        environment: pro
+        environment: prod
       network_interfaces:
-      - network: "{{ network }}"
+      - network: "{{ gcp_net_mgt }}"
         access_configs:
         - name: External NAT
-          nat_ip: "{{ address }}"
+          nat_ip: "{{ extip-test01 }}"
           type: ONE_TO_ONE_NAT
-      zone: us-central1-a
-      project: test_project
-      auth_kind: serviceaccount
-      service_account_file: "/tmp/auth.pem"
+      zone: "{{ gcp_zone }}"
+      project: "{{ gcp_project }}"
+      auth_kind: "{{ gcp_cred_kind }}"
+      service_account_file: "{{ gcp_account_file }}"
       state: present
