@@ -9,6 +9,7 @@
 
     - name: create external ip
       gcp_compute_address:
+        address: '35.216.151.132'
         name: 'extip-test01'
         project: "{{ gcp_project }}"
         region: "{{ gcp_region }}"
@@ -16,4 +17,4 @@
         network_tier: "{{ gcp_net_tier }}"
         auth_kind: "{{ gcp_cred_kind }}"
         service_account_file: "{{ gcp_account_file }}"
-        state: absent
+        state: 'present'
