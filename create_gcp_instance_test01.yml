@@ -43,7 +43,7 @@
           access_configs:
           - name: External NAT
             network_tier: "{{ gcp_net_tier }}"
-            nat_ip: "{{ address }}"
+            nat_ip: "{{ network }}"
             type: ONE_TO_ONE_NAT
           network_ip: "10.172.0.60"
         zone: "{{ gcp_zone }}"
