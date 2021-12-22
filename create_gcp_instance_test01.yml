@@ -39,7 +39,7 @@
         network_interfaces:
         - network: "{{ network }}"
           access_configs:
-            name: External NAT
+          - name: External NAT
             type: ONE_TO_ONE_NAT
             set_public_ptr: 'yes'
             public_ptr_domain_name: "{{ gcp_pub_domain }}"
