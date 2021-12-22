@@ -13,7 +13,7 @@
   tasks:
 
     - name: Display the Dictionary 
-      debug: var=mydict
+      debug: var=network
 
     - name: create test01 disk
       gcp_compute_disk:
