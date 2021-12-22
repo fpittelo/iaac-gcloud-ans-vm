@@ -28,6 +28,7 @@
 35.216.151.132
 35.216.236.133
 35.216.161.224
+35.216.229.8
 
 [webservers]
 35.216.219.21
@@ -38,6 +39,9 @@
 
 [automate]
 35.216.161.224
+
+[test]
+35.216.229.8
 
 # If you have multiple hosts following a pattern you can specify
 # them like this:
