@@ -8,7 +8,7 @@
   vars:
     - network: {
                'selfLink': 'projects/iaac-333811/global/networks/default',
-               'address' : '35.216.229.8'
+               'address' : "{{ gcp_test01_extip }}"
                }
   
   tasks:
