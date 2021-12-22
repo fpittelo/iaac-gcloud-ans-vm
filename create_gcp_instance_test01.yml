@@ -13,11 +13,20 @@
     - labels:  {
                'env' : prod
                }
+    - tags:   {
+               'env' : prod
+              }
   
   tasks:
 
-    - name: Display the Dictionary 
+    - name: Display network Dictionary 
       debug: var=network
+    
+    - name: Display labels Dictionary 
+      debug: var=labels
+
+    - name: Display tags Dictionary 
+      debug: var=tags
 
     - name: Create test01 disk
       gcp_compute_disk:
