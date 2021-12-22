@@ -13,3 +13,4 @@ gcp_net_tier: 'STANDARD'
 gcp_net_ext: 'EXTERNAL'
 gcp_net_int: 'INTERNAL'
 gcp_test01_extip: 'extip-test01'
+#########################################
