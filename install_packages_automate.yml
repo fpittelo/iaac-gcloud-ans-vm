@@ -1,6 +1,6 @@
 ---
 - name: install packages common to all servers
-  hosts: automate
+  hosts: test01
   become: true
 
   tasks:
