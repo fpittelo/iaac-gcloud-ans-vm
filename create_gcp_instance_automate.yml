@@ -5,6 +5,12 @@
   vars_files:
     - /home/ansible/iaac-gcloud/vars/vars_global.yml
   
+  vars:
+    - network: {
+               'selfLink': 'projects/iaac-333811/global/networks/default',
+               'address' : "{{ gcp_automate_extip }}"
+               }
+
   tasks:
   
     - name: create automate disk
@@ -19,38 +25,6 @@
         state: present
       register: disk
 
-    - name: create a  VPC network
-      gcp_compute_network:
-        name: default
-        project: "{{ gcp_project }}"
-        auth_kind: "{{ gcp_cred_kind }}"
-        service_account_file: "{{ gcp_account_file }}"
-        state: present
-      register: network
-
-#   - name: create automate internal ip address
-#     google.cloud.gcp_compute_address:
-#       name: intip-automate
-#       region: "{{ gcp_region }}"
-#       project: "{{ gcp_project }}"
-#       address_type: internal
-#       address: 10.172.0.30
-#       auth_kind: "{{ gcp_cred_kind }}"
-#       service_account_file: "{{ gcp_account_file }}"
-#       state: present
-#     register: network
-
-    - name: create automate public IP Address
-      gcp_compute_address:
-        name: extip-automate
-        region: "{{ gcp_region }}"
-        project: "{{ gcp_project }}"
-        network_tier: "{{ gcp_net_tier }}"
-        auth_kind: "{{ gcp_cred_kind }}"
-        service_account_file: "{{ gcp_account_file }}"
-        state: present
-      register: address
-
     - name: create automate instance
       gcp_compute_instance:
         name: automate
@@ -64,15 +38,11 @@
           access_configs:
           - name: External NAT
             network_tier: "{{ gcp_net_tier }}"
-            nat_ip: "{{ address }}"
+            nat_ip: "{{ network }}"
             type: ONE_TO_ONE_NAT
-          network_ip: "10.172.0.40"
-#         subnetwork: "projects/iaac-gloud-313808/regions/europe-west6/subnetworks/default"
+          network_ip: "{{ gcp_automate_intip }}"
         zone: "{{ gcp_zone }}"
         project: "{{ gcp_project }}"
-        labels:
-          all: prod
-          automate: prod
         auth_kind: "{{ gcp_cred_kind }}"
         service_account_file: "{{ gcp_account_file }}"
         state: present
