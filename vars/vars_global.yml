@@ -12,6 +12,7 @@ gcp_vm_type_2: 'e2-small'
 gcp_net_tier: 'STANDARD'
 gcp_net_ext: 'EXTERNAL'
 gcp_net_int: 'INTERNAL'
+gcp_pub_domain: 'fpittelo.ch'
 ########## Internal IP's ##################
 gcp_webserver01_intip: '10.172.0.10'
 gcp_webserver02_intip: '10.172.0.20'
