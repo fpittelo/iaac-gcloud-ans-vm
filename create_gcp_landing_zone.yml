@@ -58,4 +58,16 @@
         state: present
       register: network
 
+    - name: create test01 internal ip address
+      gcp_compute_address:
+        region: "{{ gcp_region }}"
+        project: "{{ gcp_project }}"
+        name: intip-test01
+        address_type: internal
+        address: 10.172.0.60
+        auth_kind: "{{ gcp_cred_kind }}"
+        service_account_file: "{{ gcp_account_file }}"
+        state: present
+      register: network
+
 ######################################################################
