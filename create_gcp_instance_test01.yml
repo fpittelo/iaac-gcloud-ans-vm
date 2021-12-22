@@ -15,9 +15,6 @@
 
     - name: Display network Dictionary 
       debug: var=network
-    
-    - name: Display labels Dictionary 
-      debug: var=labels
 
     - name: Create test01 disk
       gcp_compute_disk:
