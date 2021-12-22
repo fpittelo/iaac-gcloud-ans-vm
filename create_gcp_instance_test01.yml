@@ -6,7 +6,7 @@
     - /home/ansible/iaac-gcloud/vars/vars_global.yml
 
   vars:
-    - mydict: {
+    - network: {
                'selfLink': 'projects/iaac-333811/regions/europe-west6/subnetworks/default', 
                }
   
