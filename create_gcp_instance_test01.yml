@@ -50,6 +50,3 @@
         service_account_file: "{{ gcp_account_file }}"
         state: present
         status: RUNNING
-    - name: Show instance Details
-      debug:
-        msg: "The automate instance is accessible at {{ address.address }}"
