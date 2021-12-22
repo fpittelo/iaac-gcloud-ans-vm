@@ -7,7 +7,8 @@
 
   vars:
     - network: {
-               'selfLink': 'projects/iaac-333811/regions/europe-west6/subnetworks/default', 
+               'selfLink': 'projects/iaac-333811/regions/europe-west6/subnetworks/default',
+               'address' : '35.216.229.8'
                }
   
   tasks:
@@ -42,7 +43,7 @@
           access_configs:
           - name: External NAT
             network_tier: "{{ gcp_net_tier }}"
-            nat_ip: '35.216.229.8'
+            nat_ip: "{{ address }}"
             type: ONE_TO_ONE_NAT
           network_ip: "10.172.0.60"
         zone: "{{ gcp_zone }}"
