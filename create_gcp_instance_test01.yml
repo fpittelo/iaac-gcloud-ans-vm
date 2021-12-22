@@ -30,7 +30,7 @@
         labels:
           environment: prod
         network_interfaces:
-        - network: "{{ gcp_net_mgt }}"
+        - network: 'default'
           access_configs:
           - name: External NAT
             network_tier: "{{ gcp_net_tier }}"
