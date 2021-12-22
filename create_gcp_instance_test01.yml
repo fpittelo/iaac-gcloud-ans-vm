@@ -10,15 +10,18 @@
                'selfLink': 'projects/iaac-333811/global/networks/default',
                'address' : '35.216.229.8'
                }
+    - labels:  {
+               'env' : prod
+               }
   
   tasks:
 
     - name: Display the Dictionary 
       debug: var=network
 
-    - name: create test01 disk
+    - name: Create test01 disk
       gcp_compute_disk:
-        name: test01
+        name: 'test01'
         size_gb: 10
         source_image: "{{ gcp_vm_img }}"
         zone: "{{ gcp_zone }}"
@@ -28,16 +31,16 @@
         state: present
       register: disk
 
-    - name: create test01 instance
+    - name: Create test01 instance
       gcp_compute_instance:
-        name: test01
+        name: 'test01'
         machine_type: "{{ gcp_vm_type }}"
         disks:
         - auto_delete: 'true'
           boot: 'true'
           source: "{{ disk }}"
         labels:
-          environment: prod
+          env: "{{ labels }}"
         network_interfaces:
         - network: "{{ network }}"
           access_configs:
@@ -45,7 +48,7 @@
             network_tier: "{{ gcp_net_tier }}"
             nat_ip: "{{ network }}"
             type: ONE_TO_ONE_NAT
-          network_ip: "10.172.0.60"
+          network_ip: "{{ gcp_test01_intip }}"
         zone: "{{ gcp_zone }}"
         project: "{{ gcp_project }}"
         auth_kind: "{{ gcp_cred_kind }}"
