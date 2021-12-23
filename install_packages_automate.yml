@@ -19,7 +19,7 @@
 
 ############## Add Ansible repo #######################
 
-    - name: Add ansible repository from PPA and install its signing key on Debian target
+    - name: Add ansible repository from PPA and install its signing key Ubuntu
       ansible.builtin.apt_repository:
         repo: 'ppa:ansible/ansible'
         codename: impish
