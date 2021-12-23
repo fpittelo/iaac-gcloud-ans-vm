@@ -1,11 +1,11 @@
 ---
-- name: install packages common to all servers
+- name: install packages for automate
   hosts: test01
   become: true
 
   tasks:
 
-############## update all         ###########################
+############## update all  ##################################
 
 #   - name: apt-get update on all hosts
 #     apt:
@@ -19,7 +19,7 @@
 
 ############## Add Ansible repo #######################
 
-    - name: Add ansible repository from PPA and install its signing key Ubuntu
+    - name: Add ansible repository
       ansible.builtin.apt_repository:
         repo: 'ppa:ansible/ansible'
         codename: impish

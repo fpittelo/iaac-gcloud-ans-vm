@@ -31,7 +31,7 @@
     - name: Create test01 instance
       gcp_compute_instance:
         name: 'test01'
-        machine_type: "{{ gcp_vm_type }}"
+        machine_type: "{{ gcp_vm_type_2 }}"
         disks:
         - auto_delete: 'true'
           boot: 'true'
