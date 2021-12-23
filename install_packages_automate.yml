@@ -19,10 +19,10 @@
 
 ############## Add Ansible repo #######################
 
-    - name: Add specified repository into sources list
+    - name: Add ansible repository from PPA and install its signing key on Debian target
       ansible.builtin.apt_repository:
-        repo: deb http://ppa.launchpad.net/ansible/ansible/ubuntu impish main
-        state: present
+        repo: 'ppa:ansible/ansible'
+        codename: impish
 
 ############## Install Ansible ##############################
 
