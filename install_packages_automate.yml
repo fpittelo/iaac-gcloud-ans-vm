@@ -17,12 +17,11 @@
       apt:
         name: git
 
-############## Add apt key gor Ansible#######################
+############## Add Ansible repo #######################
 
-    - name: Add an Apt signing key, will not download if present
-      ansible.builtin.apt_key:
-        id: 6125E2A8C77F2818FB7BD15B93C4A3FD7BB9C367
-        url: https://keyserver.ubuntu.com/pks/lookup?fingerprint=on&op=index&search=0x6125E2A8C77F2818FB7BD15B93C4A3FD7BB9C367
+    - name: Add specified repository into sources list
+      ansible.builtin.apt_repository:
+        repo: deb http://ppa.launchpad.net/ansible/ansible/ubuntu impish main
         state: present
 
 ############## Install Ansible ##############################
