@@ -56,6 +56,3 @@
         service_account_file: "{{ gcp_account_file }}"
         state: present
         status: RUNNING
-
-    - name: Play installation packages for automate
-      import_playbook: install_packages_automate.yml
