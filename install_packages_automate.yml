@@ -7,9 +7,9 @@
 
 ############## update all         ##############################
 
-    - name: apt-get update on all hosts
-      apt:
-        update_cache: yes
+#   - name: apt-get update on all hosts
+#     apt:
+#       update_cache: yes
 
 ############## install GIT #################################
 
