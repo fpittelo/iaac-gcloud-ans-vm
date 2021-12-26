@@ -7,24 +7,15 @@
 
     - name: copy website01 config file webserver01
       ansible.builtin.copy:
-        src: /home/ansible/iaac-gcloud/files/website_config_test01
+        src: /home/ansible/iaac-gcloud/files/website_config_test01.conf
         dest: /etc/apache2/sites-available/
         owner: root
         group: root
         mode: '0644'
         backup: yes
 
-    - name: copy 000-default.conf file webserver01
-      ansible.builtin.copy:
-        src: /home/ansible/iaac-gcloud/files/000-default.conf
-        dest: /etc/apache2/sites-available/
-        owner: root
-        group: root
-        mode: '0644'
-        backup: yes
-
-    - name: create symlink for 000-default.conf file
-      ansible.builtin.shell: ln /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-enabled/000-default.conf
+    - name: create symlink for website_config_test01.conf file
+      ansible.builtin.shell: ln /etc/apache2/sites-available/website_config_test01.conf /etc/apache2/sites-enabled/website_config_test01.conf
 
     - name: stop Apache server
       ansible.builtin.shell: service apache2 stop
@@ -43,24 +34,15 @@
 
     - name: copy website02 config file webserver02
       ansible.builtin.copy:
-        src: /home/ansible/iaac-gcloud/files/website_config_test02
+        src: /home/ansible/iaac-gcloud/files/website_config_test02.conf
         dest: /etc/apache2/sites-available/
         owner: root
         group: root
         mode: '0644'
         backup: yes
 
-    - name: copy 000-default.conf file webserver02
-      ansible.builtin.copy:
-        src: /home/ansible/iaac-gcloud/files/000-default.conf
-        dest: /etc/apache2/sites-available/
-        owner: root
-        group: root
-        mode: '0644'
-        backup: yes
-
-    - name: create symlink for 000-default.conf file
-      ansible.builtin.shell: ln /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-enabled/000-default.conf
+    - name: create symlink for website_config_test02.conf file
+      ansible.builtin.shell: ln /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-enabled/website_config_test02.conf
 
     - name: stop Apache server
       ansible.builtin.shell: service apache2 stop
