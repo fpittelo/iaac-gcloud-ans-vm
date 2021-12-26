@@ -14,7 +14,7 @@
   - name: Git website checkout
     ansible.builtin.git:
       repo: 'https://github.com/fpittelo/website.git'
-      dest: /var/www/website
+      dest: /var/www/html/website
 #     version: release-0.22
 
 # - name: create virtual host
