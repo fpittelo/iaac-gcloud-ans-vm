@@ -14,6 +14,15 @@
         mode: '0644'
         backup: yes
 
+    - name: copy apache2.conf file to webserver01
+      ansible.builtin.copy:
+        src: /home/ansible/iaac-gcloud/files/apache2.conf
+        dest: /etc/apache2/apache2.conf
+        owner: root
+        group: root
+        mode: '0644'
+        backup: yes
+
     - name: create symlink for website_config_test01.conf file
       ansible.builtin.shell: ln /etc/apache2/sites-available/website_config_test01.conf /etc/apache2/sites-enabled/website_config_test01.conf
 
@@ -36,6 +45,15 @@
       ansible.builtin.copy:
         src: /home/ansible/iaac-gcloud/files/website_config_test02.conf
         dest: /etc/apache2/sites-available/
+        owner: root
+        group: root
+        mode: '0644'
+        backup: yes
+
+    - name: copy apache2.conf file to webserver02
+      ansible.builtin.copy:
+        src: /home/ansible/iaac-gcloud/files/apache2.conf
+        dest: /etc/apache2/apache2.conf
         owner: root
         group: root
         mode: '0644'
