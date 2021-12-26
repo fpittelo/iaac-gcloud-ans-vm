@@ -1,0 +1,15 @@
+---
+- name: update all instances
+  hosts: test
+  become: true
+
+  tasks:
+
+    - name: website config file to all webservers
+      ansible.builtin.copy:
+        src: /etc/hosts
+        dest: /etc/hosts
+        owner: root
+        group: root
+        mode: '0644'
+        backup: yes
