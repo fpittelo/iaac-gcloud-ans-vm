@@ -14,8 +14,26 @@
         mode: '0644'
         backup: yes
 
+    - name: copy 000-default.conf file webserver01
+      ansible.builtin.copy:
+        src: /home/ansible/iaac-gcloud/files/000-default.conf
+        dest: /etc/apache2/sites-available/
+        owner: root
+        group: root
+        mode: '0644'
+        backup: yes
+
+    - name: create symlink for 000-default.conf file
+      ansible.builtin.shell: ln /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-enabled/000-default.conf
+
+    - name: stop Apache server
+      ansible.builtin.shell: service apache2 stop
+
+    - name: start Apache server
+      ansible.builtin.shell: service apache2 start
 
 
+############### Test02 Tasks ##########################################
 
 - name: copy website02 config file webserver02
   hosts: test02
@@ -32,3 +50,20 @@
         mode: '0644'
         backup: yes
 
+    - name: copy 000-default.conf file webserver02
+      ansible.builtin.copy:
+        src: /home/ansible/iaac-gcloud/files/000-default.conf
+        dest: /etc/apache2/sites-available/
+        owner: root
+        group: root
+        mode: '0644'
+        backup: yes
+
+    - name: create symlink for 000-default.conf file
+      ansible.builtin.shell: ln /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-enabled/000-default.conf
+
+    - name: stop Apache server
+      ansible.builtin.shell: service apache2 stop
+
+    - name: start Apache server
+      ansible.builtin.shell: service apache2 start

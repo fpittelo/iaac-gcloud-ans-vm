@@ -7,7 +7,7 @@
 
   - name: Create website directory
     ansible.builtin.file:
-      path: /var/www/website
+      path: /var/www/html/website
       state: directory
       mode: '0755'
 
