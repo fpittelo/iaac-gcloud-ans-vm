@@ -1,6 +1,6 @@
 ---
 - name: publish website on webservers
-  hosts: webservers
+  hosts: test
   become: true
 
   tasks:
