@@ -15,6 +15,7 @@
     ansible.builtin.git:
       repo: 'https://github.com/fpittelo/website.git'
       dest: /var/www/html/website
+      force: yes
 #     version: release-0.22
 
 # - name: create virtual host
