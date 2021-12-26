@@ -1,14 +1,29 @@
 ---
 - name: update all instances
-  hosts: test
+  hosts: test01
   become: true
 
   tasks:
 
-    - name: website config file to all webservers
+    - name: website01 config file to all webservers
       ansible.builtin.copy:
-        src: /etc/hosts
-        dest: /etc/hosts
+        src: /home/ansible/iaac-gcloud/files/website_config_test01
+        dest: /etc/apache2/sites-available/
+        owner: root
+        group: root
+        mode: '0644'
+        backup: yes
+
+- name: update all instances
+  hosts: test02
+  become: true
+
+  tasks:
+
+    - name: website02 config file to all webservers
+      ansible.builtin.copy:
+        src: /home/ansible/iaac-gcloud/files/website_config_test02
+        dest: /etc/apache2/sites-available/
         owner: root
         group: root
         mode: '0644'
