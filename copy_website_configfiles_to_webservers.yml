@@ -25,9 +25,11 @@
 
     - name: remove existing symlink for 000-default.conf file
       ansible.builtin.shell: rm /etc/apache2/sites-enabled/000-default.conf
+      ignore_errors: yes
 
     - name: remove existing symlink for website_config_test01.conf file
       ansible.builtin.shell: rm /etc/apache2/sites-enabled/website_config_test01.conf
+      ignore_errors: yes
 
     - name: create symlink for 000-default.conf file
       ansible.builtin.shell: ln /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-enabled/000-default.conf
@@ -67,9 +69,11 @@
 
     - name: remove existing symlink for 000-default.conf file
       ansible.builtin.shell: rm /etc/apache2/sites-enabled/000-default.conf
+      ignore_errors: yes
 
     - name: remove existing symlink for website_config_test02.conf file
       ansible.builtin.shell: rm /etc/apache2/sites-enabled/website_config_test02.conf
+      ignore_errors: yes
 
     - name: create symlink for 000-default.conf file
       ansible.builtin.shell: ln /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-enabled/000-default.conf
