@@ -56,3 +56,8 @@
         service_account_file: "{{ gcp_account_file }}"
         state: present
         status: RUNNING
+
+################ import_playbooks ######################
+
+- name: Create Webserver01
+  import_playbook: create_gcp_instance_webserver01.yml

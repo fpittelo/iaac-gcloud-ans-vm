@@ -89,3 +89,8 @@
 
     - name: start Apache server
       ansible.builtin.shell: service apache2 start
+
+################ import_playbooks ######################
+
+- name: Publish website to webservers
+  import_playbook: publish_website_from_git.yml

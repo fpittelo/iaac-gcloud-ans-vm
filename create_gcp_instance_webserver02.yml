@@ -56,3 +56,14 @@
         service_account_file: "{{ gcp_account_file }}"
         state: present
         status: RUNNING
+
+################ pause ######################
+
+    - name: Pause for 30 seconds for instances start
+      pause:
+        seconds: 30
+
+################ import_playbooks ######################
+
+- name: Update instances and install packages
+  import_playbook: apt_update_install_all.yml

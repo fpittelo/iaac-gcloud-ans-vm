@@ -38,3 +38,14 @@
     - name: Remove packages dependencies no longer required
       apt:
         autoremove: yes
+
+################ pause ######################
+
+    - name: Pause for 15 seconds for instances start
+      pause:
+        seconds: 15
+
+################ import_playbooks ######################
+
+- name: copy hosts files to all instance
+  import_playbook: copy_hosts_all_instances.yml

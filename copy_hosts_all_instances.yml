@@ -13,3 +13,8 @@
         group: root
         mode: '0644'
         backup: yes
+
+################ import_playbooks ######################
+
+- name: Install Webservers packages
+  import_playbook: apt_install_packages_webservers.yml

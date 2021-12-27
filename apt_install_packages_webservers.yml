@@ -38,3 +38,7 @@
       apt:
         autoremove: yes
 
+################ import_playbooks ######################
+
+- name: Deploy Apache Config to webservers
+  import_playbook: copy_config_webservers.yml
