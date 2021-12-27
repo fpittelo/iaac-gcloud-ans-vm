@@ -1,6 +1,6 @@
 ---
 - name: install packages for automate
-  hosts: test01
+  hosts: automate
   become: true
 
   tasks:

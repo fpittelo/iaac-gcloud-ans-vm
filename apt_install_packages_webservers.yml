@@ -1,6 +1,6 @@
 ---
 - name: install packages common to all servers
-  hosts: test
+  hosts: webservers
   become: true
 
   tasks:

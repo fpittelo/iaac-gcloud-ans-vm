@@ -1,6 +1,6 @@
 ---
-- name: copy website01 config file webserver01
-  hosts: test01
+- name: Apply Apache config file to webserver01
+  hosts: webserver01
   become: true
 
   tasks:
@@ -46,8 +46,8 @@
 
 ############### Test02 Tasks ##########################################
 
-- name: copy website02 config file webserver02
-  hosts: test02
+- name: Apply Apache config file to webserver02
+  hosts: webserver02
   become: true
 
   tasks:
