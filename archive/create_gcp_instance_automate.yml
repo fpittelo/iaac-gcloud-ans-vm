@@ -1,24 +1,21 @@
 ---
-- name: Create automate instance
+- name: Create automate gcp instance
   hosts: localhost
   
   vars_files:
     - /home/ansible/iaac-gcloud/vars/vars_global.yml
-
+  
   vars:
     - network: {
                'selfLink': 'projects/iaac-333811/global/networks/default',
                'address' : "{{ gcp_automate_extip }}"
                }
-  
+
   tasks:
-
-    - name: Display network Dictionary 
-      debug: var=network
-
-    - name: Create automate disk
+  
+    - name: create automate disk
       gcp_compute_disk:
-        name: 'automate'
+        name: automate-disk
         size_gb: 10
         source_image: "{{ gcp_vm_img }}"
         zone: "{{ gcp_zone }}"
@@ -28,9 +25,9 @@
         state: present
       register: disk
 
-    - name: Create automate instance
+    - name: create automate instance
       gcp_compute_instance:
-        name: 'automate'
+        name: automate
         machine_type: "{{ gcp_vm_type_2 }}"
         disks:
         - auto_delete: 'true'
@@ -40,24 +37,16 @@
         - network: "{{ network }}"
           access_configs:
           - name: External NAT
-            type: ONE_TO_ONE_NAT
-#           set_public_ptr: 'yes'
-#           public_ptr_domain_name: "{{ gcp_pub_domain }}"
             network_tier: "{{ gcp_net_tier }}"
             nat_ip: "{{ network }}"
+            type: ONE_TO_ONE_NAT
           network_ip: "{{ gcp_automate_intip }}"
-        tags:
-          items:
-            - 'automate'
-            - 'http-server'
         zone: "{{ gcp_zone }}"
         project: "{{ gcp_project }}"
         auth_kind: "{{ gcp_cred_kind }}"
         service_account_file: "{{ gcp_account_file }}"
         state: present
         status: RUNNING
-
-################ import_playbooks ######################
-
-- name: Create Monitor
-  import_playbook: create_gcp_instance_monitor.yml
+    - name: Show instance Details
+      debug:
+        msg: "The automate instance is accessible at {{ address.address }}"

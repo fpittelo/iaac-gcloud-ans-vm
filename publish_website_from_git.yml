@@ -7,14 +7,15 @@
 
   - name: Create website directory
     ansible.builtin.file:
-      path: /var/www/website
+      path: /var/www/html/website
       state: directory
       mode: '0755'
 
   - name: Git website checkout
     ansible.builtin.git:
       repo: 'https://github.com/fpittelo/website.git'
-      dest: /var/www/website
+      dest: /var/www/html/website
+      force: yes
 #     version: release-0.22
 
 # - name: create virtual host

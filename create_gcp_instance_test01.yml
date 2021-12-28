@@ -1,5 +1,5 @@
 ---
-- name: Create automate instance
+- name: Create test01 instance
   hosts: localhost
   
   vars_files:
@@ -8,7 +8,7 @@
   vars:
     - network: {
                'selfLink': 'projects/iaac-333811/global/networks/default',
-               'address' : "{{ gcp_automate_extip }}"
+               'address' : "{{ gcp_test01_extip }}"
                }
   
   tasks:
@@ -16,9 +16,9 @@
     - name: Display network Dictionary 
       debug: var=network
 
-    - name: Create automate disk
+    - name: Create test01 disk
       gcp_compute_disk:
-        name: 'automate'
+        name: 'test01'
         size_gb: 10
         source_image: "{{ gcp_vm_img }}"
         zone: "{{ gcp_zone }}"
@@ -28,9 +28,9 @@
         state: present
       register: disk
 
-    - name: Create automate instance
+    - name: Create test01 instance
       gcp_compute_instance:
-        name: 'automate'
+        name: 'test01'
         machine_type: "{{ gcp_vm_type_2 }}"
         disks:
         - auto_delete: 'true'
@@ -45,10 +45,10 @@
 #           public_ptr_domain_name: "{{ gcp_pub_domain }}"
             network_tier: "{{ gcp_net_tier }}"
             nat_ip: "{{ network }}"
-          network_ip: "{{ gcp_automate_intip }}"
+          network_ip: "{{ gcp_test01_intip }}"
         tags:
           items:
-            - 'automate'
+            - 'test01'
             - 'http-server'
         zone: "{{ gcp_zone }}"
         project: "{{ gcp_project }}"
@@ -59,5 +59,5 @@
 
 ################ import_playbooks ######################
 
-- name: Create Monitor
-  import_playbook: create_gcp_instance_monitor.yml
+- name: install packages for all machines
+  import_playbook: create_gcp_instance_test02.yml

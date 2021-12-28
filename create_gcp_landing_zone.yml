@@ -1,46 +1,16 @@
 ---
-
 - name: Create gcp landing zone
   hosts: localhost
   
-  vars:
-    gcp_project: iaac-333811
-    gcp_cred_kind: serviceaccount
-    gcp_account_file: /home/ansible/security/ansible-iaac-gcloud.json
-    gcp_zone: 'europe-west6-b'
-    gcp_region: 'europe-west6'
-    gcp_net_mgt: 'default'
-    gcp_net_prod: 'iaac-gcloud-vpc'
-    gcp_net_tier: 'standard'
+  vars_files:
+    - /home/ansible/iaac-gcloud/vars/vars_global.yml
 
   tasks:
-###################################################################
-#   - name: delete vpc network for servers
-#     google.cloud.gcp_compute_network:
-#       name: iaac-gloud-servers
-#       auto_create_subnetworks: 'true'
-#       project: "{{ gcp_project }}"
-#       auth_kind: "{{ gcp_cred_kind }}"
-#       service_account_file: "{{ gcp_account_file }}"
-#       state: absent
-#     register: network
-    
-#   - name: create vpc servers subnet
-#     google.cloud.gcp_compute_subnetwork:
-#       name: servers-subnet
-#       region: "{{ gcp_region }}"
-#       network: "{{ network }}"
-#       ip_cidr_range: 10.172.0.10/24
-#       project: "{{ gcp_project }}"
-#       auth_kind: "{{ gcp_cred_kind }}"
-#       service_account_file: "{{ gcp_account_file }}"
-#       state: present
-######################################################################
-#       Create Internal IP's for servers
-######################################################################
+
+############ Create Internal IP's ####################
 
     - name: create webserver01 internal ip address
-      google.cloud.gcp_compute_address:
+      gcp_compute_address:
         region: "{{ gcp_region }}"
         project: "{{ gcp_project }}"
         name: intip-webserver01
@@ -52,7 +22,7 @@
       register: network
     
     - name: create webserver02 internal ip address
-      google.cloud.gcp_compute_address:
+      gcp_compute_address:
         region: "{{ gcp_region }}"
         project: "{{ gcp_project }}"
         name: intip-webserver02
@@ -64,7 +34,7 @@
       register: network
     
     - name: create monitor internal ip address
-      google.cloud.gcp_compute_address:
+      gcp_compute_address:
         region: "{{ gcp_region }}"
         project: "{{ gcp_project }}"
         name: intip-monitor
@@ -76,7 +46,7 @@
       register: network
 
     - name: create automate internal ip address
-      google.cloud.gcp_compute_address:
+      gcp_compute_address:
         region: "{{ gcp_region }}"
         project: "{{ gcp_project }}"
         name: intip-automate
@@ -87,51 +57,28 @@
         state: present
       register: network
 
-######################################################################
-#       Create External IP's for servers
-######################################################################
-
-    - name: create webserver01 external ip address
-      google.cloud.gcp_compute_address:
+    - name: create test01 internal ip address
+      gcp_compute_address:
         region: "{{ gcp_region }}"
         project: "{{ gcp_project }}"
-        name: extip-webserver01
-        address_type: external
-        network_tier: "{{ gcp_net_tier }}"
-        auth_kind: "{{ gcp_cred_kind }}"
-        service_account_file: "{{ gcp_account_file }}"
-        state: present
-      register: network
-    
-    - name: create webserver02 external ip address
-      google.cloud.gcp_compute_address:
-        region: "{{ gcp_region }}"
-        project: "{{ gcp_project }}"
-        name: extip-webserver02
-        address_type: external
-        network_tier: "{{ gcp_net_tier }}"
+        name: intip-test01
+        address_type: internal
+        address: 10.172.0.60
         auth_kind: "{{ gcp_cred_kind }}"
         service_account_file: "{{ gcp_account_file }}"
         state: present
       register: network
 
-    - name: create monitor external ip address
-      google.cloud.gcp_compute_address:
+    - name: create test02 internal ip address
+      gcp_compute_address:
         region: "{{ gcp_region }}"
         project: "{{ gcp_project }}"
-        name: extip-monitor
-        address_type: external
-        network_tier: "{{ gcp_net_tier }}"
+        name: intip-test02
+        address_type: internal
+        address: 10.172.0.70
         auth_kind: "{{ gcp_cred_kind }}"
         service_account_file: "{{ gcp_account_file }}"
+        state: present
+      register: network
 
-    - name: create automate external ip address
-      google.cloud.gcp_compute_address:
-        region: "{{ gcp_region }}"
-        project: "{{ gcp_project }}"
-        name: extip-automate
-        address_type: external
-        network_tier: "{{ gcp_net_tier }}"
-        auth_kind: "{{ gcp_cred_kind }}"
-        service_account_file: "{{ gcp_account_file }}"
-#########################################################
+######################################################################

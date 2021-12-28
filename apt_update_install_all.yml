@@ -1,0 +1,51 @@
+---
+- name: update and install software common to all instances
+  hosts: all
+  become: true
+
+  tasks:
+
+############# Update os on all hosts ###################
+
+    - name: Update apps on all hosts
+      apt:
+        update_cache: yes
+      changed_when: False
+
+############# install packages common to all ###########
+
+    - name: install ufw
+      apt:
+        name: ufw
+        state: present
+    
+    - name: Install net-tools
+      apt:
+        name: net-tools
+        state: present
+
+    - name: Install git
+      apt:
+        name: git
+        state: present
+
+############# Clean up tasks #########################
+
+    - name: Remove packages from the cache
+      apt:
+        autoclean: yes
+
+    - name: Remove packages dependencies no longer required
+      apt:
+        autoremove: yes
+
+################ pause ######################
+
+    - name: Pause for 15 seconds for instances start
+      pause:
+        seconds: 15
+
+################ import_playbooks ######################
+
+- name: copy hosts files to all instance
+  import_playbook: copy_hosts_all_instances.yml
