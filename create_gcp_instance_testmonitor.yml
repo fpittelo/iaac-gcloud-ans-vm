@@ -1,8 +1,6 @@
 ---
 - name: Create monitor instance
   hosts: localhost
-  roles:
-    - grafana
   
   vars_files:
     - /home/ansible/iaac-gcloud/vars/vars_global.yml
