@@ -1,2 +1,11 @@
 ---
 # tasks file for roles/grafana
+- name: Install GPGP
+  apt: 
+    name: gnupg, software-properties-common
+    state: present
+
+- name: Install PGP Keys
+  apt_key:
+    url: "https://packages.grafana.com/gpg.key"
+    validate_certs: no
