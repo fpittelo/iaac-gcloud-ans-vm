@@ -1,0 +1,6 @@
+---
+- name: test
+  become: true
+  hosts: localhost
+
+  tasks:
