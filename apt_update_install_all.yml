@@ -29,6 +29,11 @@
         name: git
         state: present
 
+    - name: Install GPGP
+      apt: 
+        name: gnupg, software-properties-common
+        state: present
+
 ############# Clean up tasks #########################
 
     - name: Remove packages from the cache

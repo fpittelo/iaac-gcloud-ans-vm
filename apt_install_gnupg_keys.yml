@@ -1,11 +1,11 @@
 ---
-- name: Install GnuPG and keys
+- name: Install GPG and keys
   hosts: monitor
   become: true
 
   tasks:
 
-    - name: Install Gnu PGP
+    - name: Install GPGP
       apt: 
         name: gnupg, software-properties-common
         state: present
