@@ -2,23 +2,25 @@
 - name: Install GPG and keys
   hosts: monitor
   become: true
+  roles:
+    - grafana
 
-  tasks:
+# tasks:
 
-    - name: add Grafana Repository
-      apt_repository:
-        repo: "deb https://packages.grafana.com/enterprise/deb stable main"
-        state: present
-        validate_certs: no
+#   - name: add Grafana Repository
+#     apt_repository:
+#       repo: "deb https://packages.grafana.com/enterprise/deb stable main"
+#       state: present
+#       validate_certs: no
 
-    - name: Install Grafana
-      apt:
-        name: grafana
-        state: latest
-        update_cache: yes
+#   - name: Install Grafana
+#     apt:
+#       name: grafana
+#       state: latest
+#       update_cache: yes
 
-    - name: Start Grafana Server
-      systemd:
-        name: grafana-server
-        state: started
-        enabled: yes
+#   - name: Start Grafana Server
+#     systemd:
+#       name: grafana-server
+#       state: started
+#       enabled: yes
