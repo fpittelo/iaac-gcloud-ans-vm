@@ -1,0 +1,16 @@
+---
+- name: Install GnuPG and keys
+  hosts: monitor
+  become: true
+
+  tasks:
+
+    - name: Install Gnu PGP
+      apt: 
+        name: gnupg, software-properties-common
+        state: present
+
+    - name: Install PGP Keys
+      apt_key:
+        url: "https://packages.grafana.com/gpg.key"
+        validate_certs: not
