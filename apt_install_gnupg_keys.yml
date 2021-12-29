@@ -13,4 +13,4 @@
     - name: Install PGP Keys
       apt_key:
         url: "https://packages.grafana.com/gpg.key"
-        validate_certs: not
+        validate_certs: no
