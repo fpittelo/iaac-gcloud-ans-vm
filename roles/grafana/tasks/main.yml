@@ -21,3 +21,9 @@
     name: grafana
     state: latest
     update_cache: yes
+
+- name: Start Grafana Server
+  systemd:
+    name: grafana-server
+    state: started
+    enabled: yes
