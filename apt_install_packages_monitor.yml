@@ -1,0 +1,8 @@
+---
+- name: Install Grafana and Prometheus
+  hosts: monitor
+  become: true
+
+  tasks:
+
+  
