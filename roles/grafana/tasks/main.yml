@@ -46,9 +46,9 @@
     mode: '0744'
     backup: yes
 
-- name: Run a local script with
-  ansible.builtin.script: /home/ansible/set-grafana-pwd.sh
-  remote_src: yes
+- name: Run a local script to Monitor host
+  ansible.builtin.script:
+    cmd: /home/ansible/set-grafana-pwd.sh
 
 #- name: Change Grafana  Admin password
 #  shell: grafan-cli admin reset-admin-password L1nuxP0wer
