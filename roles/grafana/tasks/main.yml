@@ -39,8 +39,8 @@
 
 - name: Copy Grafana Pwd script
   ansible.builtin.copy:
-    src: "/home/ansible/iaac-gcloud/files/set-grafana-pwd.sh"
-    dest: "/home/ansible/set-grafana-pwd.sh"
+    src: /home/ansible/iaac-gcloud/files/set-grafana-pwd.sh
+    dest: /home/ansible/set-grafana-pwd.sh
     owner: ansible
     group: ansible
     mode: '0744'
