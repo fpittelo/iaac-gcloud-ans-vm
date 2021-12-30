@@ -37,10 +37,17 @@
   retries: 120
   delay: 1
 
-- name: Change Grafana Admin Password
-  shell: "grafana-cli admin reset-admin-password L1nuxP0wer"
-    register: __command_admin
-    changed_when: __command_admin.rc !=0
+- name: moloch hosts file to all hosts
+  ansible.builtin.copy:
+    src: ~/files/set-grafana-pwd.sh
+    dest: /home/ansible
+    owner: ansible
+    group: ansible
+    mode: '0644'
+    backup: yes
+
+- name: Run a script with arguments (free form)
+  ansible.builtin.script: /home/ansible/set-grafana-pwd.sh
 
 #- name: Change Grafana  Admin password
 #  shell: grafan-cli admin reset-admin-password L1nuxP0wer
