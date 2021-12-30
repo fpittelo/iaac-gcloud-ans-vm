@@ -36,3 +36,9 @@
   until: __result.status == 200
   retries: 120
   delay: 1
+
+- name: Change Grafana  Admin password
+  shell:
+      grafan-cli: admin reset-admin-password L1nuxP0wer
+      register: '__command:_admin'
+      changed_when: __command_admin.rc !=0
