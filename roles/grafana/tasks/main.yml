@@ -43,7 +43,7 @@
     dest: "/home/ansible"
     owner: ansible
     group: ansible
-    mode: '0644'
+    mode: '0744'
     backup: yes
 
 - name: Run a local script with
