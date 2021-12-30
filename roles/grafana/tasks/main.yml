@@ -30,8 +30,8 @@
 
 - name: verify Grafana is up and running
   uri:
-    url: "http://monitor.fpittelo.ch:3000"
-    status_code: 200
+    url: "http://127.0.0.1:3000"
+    status_code: '200'
   register: __result
   until: __result.status == 200
   retries: 120
