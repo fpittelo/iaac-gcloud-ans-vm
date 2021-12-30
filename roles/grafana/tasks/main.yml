@@ -38,7 +38,7 @@
   delay: 1
 
 - name: Change Grafana Admin Password
-  shell: "grafana-cli" admin reset-admin-password 'L1nuxP0wer'"
+  shell: "grafana-cli admin reset-admin-password L1nuxP0wer"
     register: __command_admin
     changed_when: __command_admin.rc !=0
 
