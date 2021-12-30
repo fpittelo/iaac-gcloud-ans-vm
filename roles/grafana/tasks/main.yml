@@ -39,7 +39,7 @@
 
 - name: Change Grafana Admin Password
   ansible.builtin.shell:
-    cmd: sudo grafana-cli admin reset-admin-password L1nuxP0wer
+    cmd: "sudo grafana-cli admin reset-admin-password 'L1nuxP0wer'"
     executable: /usr/sbin/grafana-cli
 
 
