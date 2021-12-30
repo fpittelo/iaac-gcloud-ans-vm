@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo /usr/sbin/grafana-cli admin reset-admin-password L1nuxP0wer
+sudo bash /usr/sbin/grafana-cli admin reset-admin-password L1nuxP0wer
