@@ -1,2 +1,9 @@
 ---
 # tasks file for roles/prometheus
+
+- name: update and install prometheus
+  apt:
+    name: prometheus
+    state: latest
+    update_cache: yes
+    cache_valid_time: 3600
