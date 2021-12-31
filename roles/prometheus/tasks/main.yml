@@ -7,3 +7,9 @@
     state: latest
     update_cache: yes
     cache_valid_time: 3600
+
+- name: start prometheus
+  systemd:
+    name: prometheus
+    state: started
+    enabled: yes
