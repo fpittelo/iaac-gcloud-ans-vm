@@ -33,8 +33,3 @@
 - name: Remove dependencies that are no longer required
   apt:
     autoremove: yes
-
-################ import_playbooks ######################
-
-- name: Deploy Apache Config to webservers
-  import_playbook: 09_copy_config_webservers.yml
