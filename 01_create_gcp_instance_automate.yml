@@ -1,5 +1,5 @@
 ---
-- name: Create webserver02 instance
+- name: Create automate instance
   hosts: localhost
   
   vars_files:
@@ -8,7 +8,7 @@
   vars:
     - network: {
                'selfLink': 'projects/iaac-333811/global/networks/default',
-               'address' : "{{ gcp_webserver02_extip }}"
+               'address' : "{{ gcp_automate_extip }}"
                }
   
   tasks:
@@ -16,9 +16,9 @@
     - name: Display network Dictionary 
       debug: var=network
 
-    - name: Create webserver02 disk
+    - name: Create automate disk
       gcp_compute_disk:
-        name: 'webserver02'
+        name: 'automate'
         size_gb: 10
         source_image: "{{ gcp_vm_img }}"
         zone: "{{ gcp_zone }}"
@@ -28,9 +28,9 @@
         state: present
       register: disk
 
-    - name: Create webserver02 instance
+    - name: Create automate instance
       gcp_compute_instance:
-        name: 'webserver02'
+        name: 'automate'
         machine_type: "{{ gcp_vm_type_2 }}"
         disks:
         - auto_delete: 'true'
@@ -45,10 +45,10 @@
 #           public_ptr_domain_name: "{{ gcp_pub_domain }}"
             network_tier: "{{ gcp_net_tier }}"
             nat_ip: "{{ network }}"
-          network_ip: "{{ gcp_webserver02_intip }}"
+          network_ip: "{{ gcp_automate_intip }}"
         tags:
           items:
-            - 'webserver02'
+            - 'automate'
             - 'http-server'
         zone: "{{ gcp_zone }}"
         project: "{{ gcp_project }}"
@@ -57,13 +57,7 @@
         state: present
         status: RUNNING
 
-################ pause ######################
-
-    - name: Pause for 30 seconds for instances start
-      pause:
-        seconds: 30
-
 ################ import_playbooks ######################
 
-- name: Update instances and install packages
-  import_playbook: apt_update_install_all.yml
+- name: Create Monitor
+  import_playbook: 02_create_gcp_instance_monitor.yml

@@ -1,2 +1,75 @@
----
-# tasks file for roles/jenkins
+############## install GIT ##################################
+
+- name: install git
+  apt:
+    name: git
+
+############## Add Ansible repo #######################
+
+- name: Add ansible repository
+  ansible.builtin.apt_repository:
+    repo: 'ppa:ansible/ansible'
+    codename: impish
+
+############## Install Ansible ##############################
+
+- name: Install Ansible
+  apt:
+    name: ansible
+    state: present
+
+############## install Open-JDK ##############################
+
+- name: Install open-jdk
+  apt:
+    name: openjdk-11-jdk
+    state: present
+
+############## install Jenkins #################################
+
+- name: copy jenkins key to automate
+  ansible.builtin.copy:
+    src: /usr/share/keyrings/jenkins-keyring.asc
+    dest: /usr/share/keyrings/jenkins-keyring.asc
+    owner: root
+    group: root
+    mode: '0644'
+    backup: yes
+
+- name: copy source list to automate
+  ansible.builtin.copy:
+    src: /etc/apt/sources.list.d/jenkins.list
+    dest: /etc/apt/sources.list.d/jenkins.list
+    owner: root
+    group: root
+    mode: '0644'
+    backup: yes
+
+- name: apt-get update on all hosts
+  apt:
+    update_cache: yes
+
+- name: Install jenkins
+  apt:
+    name: jenkins
+    state: present
+
+- name: Enable service jenkins, and not touch the state
+  ansible.builtin.service:
+    name: jenkins
+    enabled: yes
+
+- name: Start service jenkins, if not started
+  ansible.builtin.service:
+    name: jenkins
+    state: started
+
+############## Clean up tasks #################################
+
+- name: Remove useless packages from the cache
+  apt:
+    autoclean: yes
+
+- name: Remove dependencies that are no longer required
+  apt:
+    autoremove: yes

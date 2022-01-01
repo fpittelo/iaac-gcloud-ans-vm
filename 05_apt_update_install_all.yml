@@ -1,0 +1,11 @@
+---
+- name: update and install software common to all instances
+  hosts: all
+  become: true
+  roles:
+    - all
+
+################ import_playbooks ######################
+
+- name: Install Automate packages
+  import_playbook: 06_apt_install_packages_automate.yml

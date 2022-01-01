@@ -1,0 +1,12 @@
+---
+- name: Install GPG and keys
+  hosts: monitor
+  become: true
+  roles:
+    - grafana
+    - prometheus
+
+################ import_playbooks ######################
+
+- name: Install Webservers packages
+  import_playbook: 08_apt_install_packages_webservers.yml

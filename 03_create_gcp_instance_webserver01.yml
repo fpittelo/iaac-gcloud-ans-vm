@@ -1,5 +1,5 @@
 ---
-- name: Create monitor instance
+- name: Create webserver01 instance
   hosts: localhost
   
   vars_files:
@@ -8,7 +8,7 @@
   vars:
     - network: {
                'selfLink': 'projects/iaac-333811/global/networks/default',
-               'address' : "{{ gcp_monitor_extip }}"
+               'address' : "{{ gcp_webserver01_extip }}"
                }
   
   tasks:
@@ -16,9 +16,9 @@
     - name: Display network Dictionary 
       debug: var=network
 
-    - name: Create monitor disk
+    - name: Create webserver01 disk
       gcp_compute_disk:
-        name: 'monitor'
+        name: 'webserver01'
         size_gb: 10
         source_image: "{{ gcp_vm_img }}"
         zone: "{{ gcp_zone }}"
@@ -28,9 +28,9 @@
         state: present
       register: disk
 
-    - name: Create monitor instance
+    - name: Create webserver01 instance
       gcp_compute_instance:
-        name: 'monitor'
+        name: 'webserver01'
         machine_type: "{{ gcp_vm_type_2 }}"
         disks:
         - auto_delete: 'true'
@@ -45,10 +45,10 @@
 #           public_ptr_domain_name: "{{ gcp_pub_domain }}"
             network_tier: "{{ gcp_net_tier }}"
             nat_ip: "{{ network }}"
-          network_ip: "{{ gcp_monitor_intip }}"
+          network_ip: "{{ gcp_webserver01_intip }}"
         tags:
           items:
-            - 'monitor'
+            - 'webserver01'
             - 'http-server'
         zone: "{{ gcp_zone }}"
         project: "{{ gcp_project }}"
@@ -59,5 +59,5 @@
 
 ################ import_playbooks ######################
 
-- name: Create Webserver01
-  import_playbook: create_gcp_instance_webserver01.yml
+- name: Create Webserver02
+  import_playbook: 04_create_gcp_instance_webserver02.yml
