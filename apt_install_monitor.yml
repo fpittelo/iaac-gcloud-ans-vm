@@ -1,0 +1,7 @@
+---
+- name: Install GPG and keys
+  hosts: monitor
+  become: true
+  roles:
+    - grafana
+    - prometheus
