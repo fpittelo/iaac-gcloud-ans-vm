@@ -1,0 +1,56 @@
+---
+
+############# Update os on all hosts ###################
+
+- name: Update apps on all hosts
+  apt:
+    update_cache: yes
+
+############# install packages common to all ###########
+
+- name: install ufw
+  apt:
+    name: ufw
+    state: present
+    
+- name: Install net-tools
+  apt:
+    name: net-tools
+    state: present
+
+- name: Install git
+  apt:
+    name: git
+    state: present
+
+- name: Install GPGP
+  apt: 
+    name: gnupg, software-properties-common
+    state: present
+
+############# Copy host file to all hosts #####
+
+- name: moloch hosts file to all hosts
+  ansible.builtin.copy:
+    src: /etc/hosts
+    dest: /etc/hosts
+    owner: root
+    group: root
+    mode: '0644'
+    backup: yes
+
+############# Apt Clean up ###################
+
+- name: Remove packages from the cache
+  apt:
+    autoclean: yes
+
+- name: Remove packages dependencies no longer required
+  apt:
+    autoremove: yes
+
+################ pause ######################
+
+- name: Pause for 15 seconds for instances start
+  pause:
+    seconds: 15
