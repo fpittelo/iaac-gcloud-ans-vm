@@ -1,0 +1,56 @@
+---
+# tasks file for roles/grafana
+- name: Install GPGP
+  apt: 
+    name: gnupg, software-properties-common
+    state: present
+
+- name: Install PGP Keys
+  apt_key:
+    url: "https://packages.grafana.com/gpg.key"
+    validate_certs: no
+
+- name: add Grafana Repository
+  apt_repository:
+    repo: "deb https://packages.grafana.com/enterprise/deb stable main"
+    state: present
+    validate_certs: no
+
+- name: Install Grafana
+  apt:
+    name: grafana
+    state: latest
+    update_cache: yes
+
+- name: Start Grafana Server
+  systemd:
+    name: grafana-server
+    state: started
+    enabled: yes
+
+- name: verify Grafana is up and running
+  uri:
+    url: "http://127.0.0.1:3000"
+    status_code: '200'
+  register: __result
+  until: __result.status == 200
+  retries: 120
+  delay: 1
+
+- name: Copy Grafana Pwd script
+  ansible.builtin.copy:
+    src: /home/ansible/iaac-gcloud/files/set-grafana-pwd.sh
+    dest: /home/ansible/set-grafana-pwd.sh
+    owner: ansible
+    group: ansible
+    mode: '0744'
+    backup: yes
+
+- name: Run a local script to Monitor host
+  ansible.builtin.script:
+    cmd: /home/ansible/iaac-gcloud/files/set-grafana-pwd.sh
+
+#- name: Change Grafana  Admin password
+#  shell: grafan-cli admin reset-admin-password L1nuxP0wer
+#    register: '__command:_admin'
+#    changed_when: __command_admin.rc !=0
