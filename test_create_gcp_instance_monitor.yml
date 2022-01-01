@@ -57,6 +57,12 @@
         state: present
         status: RUNNING
 
+################ pause ######################
+
+    - name: Pause for 30 seconds for instances start
+      pause:
+        seconds: 30
+
 ################ import_playbooks ######################
 
 - name: install Grafana
