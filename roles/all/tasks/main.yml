@@ -55,8 +55,3 @@
 - name: Pause for 15 seconds for instances start
   pause:
     seconds: 15
-
-################ import_playbooks ######################
-
-- name: Install Automate packages
-  import_playbook: 06_apt_install_packages_automate.yml
