@@ -25,7 +25,8 @@
       access_configs:
       - name: External NAT
         type: ONE_TO_ONE_NAT
-        set_public_ptr: 'yes'
+#       set_public_ptr: 'yes'
+#       public_ptr_domain_name: "{{ gcp_pub_domain }}"
         network_tier: "{{ gcp_net_tier }}"
         nat_ip: "{{ network }}"
       network_ip: "{{ gcp_automate_intip }}"
