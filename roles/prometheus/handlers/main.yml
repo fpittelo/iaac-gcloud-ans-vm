@@ -1,2 +1,7 @@
 ---
 # handlers file for roles/prometheus
+handlers:
+    - name: Restart Prometheus
+      ansible.builtin.service:
+        name: prometheus
+        state: restarted

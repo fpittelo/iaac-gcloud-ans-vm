@@ -1,2 +1,8 @@
 ---
 # handlers file for roles/jenkins
+
+handlers:
+    - name: Restart Jenkins
+      ansible.builtin.service:
+        name: jenkins
+        state: restarted
