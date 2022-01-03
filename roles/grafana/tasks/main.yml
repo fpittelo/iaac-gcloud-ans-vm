@@ -45,8 +45,6 @@
     group: ansible
     mode: '0744'
     backup: yes
-  notify:
-  - restart grafana-server
 
 - name: Run a local script to Monitor host
   ansible.builtin.script:
