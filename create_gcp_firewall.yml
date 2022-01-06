@@ -1,5 +1,5 @@
 ---
-- name: Start all vm instances
+- name: Create firewall rule test-ingress-23
   hosts: localhost
   
   vars_files:
@@ -7,7 +7,7 @@
   
   tasks:
 
-    - name: create a firewall
+    - name: firewall rule test-ingress-23
       gcp_compute_firewall:
         name: test_object
         allowed:
@@ -15,8 +15,7 @@
           ports:
           - '23'
         target_tags:
-        - test-ssh-server
-        - staging-ssh-server
+        - automate
         source_tags:
         - test-ssh-clients
         project: "{{ gcp_project }}"
