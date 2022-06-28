@@ -20,5 +20,5 @@
   - name: extract syslog connector
     ansible.builtin.unarchive:
       src: http://client.hub.confluent.io/confluent-hub-client-latest.tar.gz
-      dest: /home/ansible/iaac-gcloud/files/confluent_syslog/confluent_syslog
+      dest: /home/ansible/iaac-gcloud/files/confluent_syslog/
       remote_src: yes    
