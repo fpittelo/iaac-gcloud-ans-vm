@@ -12,7 +12,7 @@
       mode: '0755'
 
   - name: download confluent syslog connector
-    ansible.builtin.get.url:
+    ansible.builtin.get_url:
       url: http://client.hub.confluent.io/confluent-hub-client-latest.tar.gz
       dest: /home/ansible/iaac-gcloud/files/confluent_syslog/
       mode: '0755'
