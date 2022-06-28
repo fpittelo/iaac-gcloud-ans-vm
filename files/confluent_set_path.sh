@@ -1,0 +1,1 @@
+export PATH="$HOME/iaac-gcloud/files/confluent_syslog/bin$:$PATH"
