@@ -1,0 +1,24 @@
+---
+- name: publish website on webservers
+  hosts: webserver01
+  become: true
+
+  tasks:
+
+  - name: Create a directory if it does not exist
+    ansible.builtin.file:
+      path: /home/ansible/iaac-gcloud/files/confluent_syslog
+      state: directory
+      mode: '0755'
+
+  - name: download confluent syslog connector
+    ansible.builtin.get.url:
+      url: http://client.hub.confluent.io/confluent-hub-client-latest.tar.gz
+      dest: /home/ansible/iaac-gcloud/files/confluent_syslog/
+      mode: '0755'
+
+  - name: extract syslog connector
+    ansible.builtin.unarchive:
+      src: /home/ansible/iaac-gcloud/files/confluent_syslog/confluent-hub-client-latest.tar.gz
+      dest: /home/ansible/iaac-gcloud/files/confluent_syslog/confluent_syslog
+    
