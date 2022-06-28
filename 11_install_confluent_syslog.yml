@@ -23,5 +23,10 @@
       dest: /home/ansible/iaac-gcloud/files/confluent_syslog/
       remote_src: yes    
 
+  - name: Copy file with owner and permissions
+    ansible.builtin.copy:
+      src: /home/ansible/iaac-gcloud/files/confluent_set_path.sh
+      dest: /home/ansible/iaac-gcloud/files/
+
   - name: execute shell script to export path 
     ansible.builtin.shell: /home/ansible/iaac-gcloud/files/confluent_set_path.sh
