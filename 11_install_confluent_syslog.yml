@@ -21,4 +21,4 @@
     ansible.builtin.unarchive:
       src: /home/ansible/iaac-gcloud/files/confluent_syslog/confluent-hub-client-latest.tar.gz
       dest: /home/ansible/iaac-gcloud/files/confluent_syslog/confluent_syslog
-    
+      remote_src: yes    
