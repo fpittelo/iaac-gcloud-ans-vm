@@ -1,5 +1,5 @@
 ---
-- name: publish website on webservers
+- name: install Confluent hub client and Syslog connector
   hosts: webserver01
   become: true
 
@@ -10,27 +10,39 @@
       name: openjdk-11-jdk
       state: present
 
-  - name: Create a directory if it does not exist
+  - name: Create Confluent-Hub directory if it does not exist
+    ansible.builtin.file:
+      path: /home/ansible/iaac-gcloud/files/confluent_hub
+      state: directory
+      owner: ansible
+      group: ansible
+      recurse: yes
+
+  - name: Create Confluent-Syslog directory if it does not exist
     ansible.builtin.file:
       path: /home/ansible/iaac-gcloud/files/confluent_syslog
       state: directory
-      recurse: yes
       owner: ansible
       group: ansible
+      recurse: yes
 
-# - name: download confluent syslog connector
-#   ansible.builtin.get_url:
-#     url: http://client.hub.confluent.io/confluent-hub-client-latest.tar.gz
-#     dest: /home/ansible/iaac-gcloud/files/confluent_syslog/
-#     mode: '0755'
-
-  - name: extract syslog connector
+  - name: extract Confluent-Syslog connector
     ansible.builtin.unarchive:
-      src: http://client.hub.confluent.io/confluent-hub-client-latest.tar.gz
+      src: https://d1i4a15mxbxib1.cloudfront.net/api/plugins/confluentinc/kafka-connect-syslog/versions/1.4.3/confluentinc-kafka-connect-syslog-1.4.3.zip
       dest: /home/ansible/iaac-gcloud/files/confluent_syslog/
       remote_src: yes
       owner: ansible
-      group: ansible    
+      group: ansible
+      recurse: yes
+
+  - name: extract Confluent-Hub connector
+    ansible.builtin.unarchive:
+      src: http://client.hub.confluent.io/confluent-hub-client-latest.tar.gz
+      dest: /home/ansible/iaac-gcloud/files/confluent_hub/
+      remote_src: yes
+      owner: ansible
+      group: ansible
+      recurse: yes
 
   - name: Copy file with owner and permissions
     ansible.builtin.copy:
