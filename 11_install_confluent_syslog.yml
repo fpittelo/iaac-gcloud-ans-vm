@@ -27,7 +27,7 @@
     ansible.builtin.copy:
       src: /home/ansible/iaac-gcloud/files/confluent_set_path.sh
       dest: /home/ansible/iaac-gcloud/files/
-      mode: '0644'
+      mode: '0755cd'
 
   - name: execute shell script to export path 
     ansible.builtin.shell: /home/ansible/iaac-gcloud/files/confluent_set_path.sh
