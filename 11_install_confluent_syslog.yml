@@ -33,7 +33,6 @@
       remote_src: yes
       owner: ansible
       group: ansible
-      recurse: yes
 
   - name: extract Confluent-Hub connector
     ansible.builtin.unarchive:
@@ -42,7 +41,6 @@
       remote_src: yes
       owner: ansible
       group: ansible
-      recurse: yes
 
   - name: Copy file with owner and permissions
     ansible.builtin.copy:
