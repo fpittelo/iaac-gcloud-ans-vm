@@ -9,7 +9,9 @@
     ansible.builtin.file:
       path: /home/ansible/iaac-gcloud/files/confluent_syslog
       state: directory
-      mode: '0755'
+      recurse: yes
+      owner: ansible
+      group: ansible
 
 # - name: download confluent syslog connector
 #   ansible.builtin.get_url:
@@ -21,13 +23,17 @@
     ansible.builtin.unarchive:
       src: http://client.hub.confluent.io/confluent-hub-client-latest.tar.gz
       dest: /home/ansible/iaac-gcloud/files/confluent_syslog/
-      remote_src: yes    
+      remote_src: yes
+      owner: ansible
+      group: ansible    
 
   - name: Copy file with owner and permissions
     ansible.builtin.copy:
       src: /home/ansible/iaac-gcloud/files/confluent_set_path.sh
       dest: /home/ansible/iaac-gcloud/files/
-      mode: '0755cd'
+      owner: ansible
+      group: ansible
+      mode: '0755'
 
   - name: execute shell script to export path 
     ansible.builtin.shell: /home/ansible/iaac-gcloud/files/confluent_set_path.sh
