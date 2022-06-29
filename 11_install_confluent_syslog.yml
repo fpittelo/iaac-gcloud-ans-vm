@@ -5,6 +5,11 @@
 
   tasks:
 
+  - name: Install open-jdk
+    apt:
+      name: openjdk-11-jdk
+      state: present
+
   - name: Create a directory if it does not exist
     ansible.builtin.file:
       path: /home/ansible/iaac-gcloud/files/confluent_syslog
