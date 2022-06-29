@@ -1,1 +1,1 @@
-export PATH="/home/ansible/iaac-gcloud/files/confluent_syslog/bin$:$PATH"
+export PATH="$PATH:/home/ansible/iaac-gcloud/files/confluent_syslog/bin"
