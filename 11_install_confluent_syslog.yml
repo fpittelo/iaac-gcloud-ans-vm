@@ -50,5 +50,18 @@
       group: ansible
       mode: '0755'
 
-  - name: execute shell script to export path 
-    ansible.builtin.shell: /home/ansible/iaac-gcloud/files/confluent_set_path.sh
+  - name: Create a backup of ~/.bashrc before editing
+    ansible.builtin.copy:
+      src: ~/.bashrc
+      dest: ~/.bashrc_backup
+      remote_src: yes
+
+  - name: Export ~/.bashrc file with path
+    ansible.builtin.lineinfile:
+      path: ~/.bashrc
+      insertafter: EOF
+      line: export PATH=$PATH:/home/ansible/iaac-gcloud/files/confluent_syslog/bin
+
+# - name: execute shell script to export path 
+#   ansible.builtin.shell: /home/ansible/iaac-gcloud/files/confluent_set_path.sh
+
