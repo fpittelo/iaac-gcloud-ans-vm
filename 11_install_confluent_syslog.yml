@@ -52,15 +52,18 @@
 
   - name: Create a backup of ~/.bashrc before editing
     ansible.builtin.copy:
-      src: ~/.bashrc
-      dest: ~/.bashrc_backup
+      src: /home/ansible/.bashrc
+      dest: home/ansible/.bashrc_backup
       remote_src: yes
 
   - name: Export ~/.bashrc file with path
     ansible.builtin.lineinfile:
-      path: ~/.bashrc
+      path: /home/ansible/.bashrc
       insertafter: EOF
       line: export PATH=$PATH:/home/ansible/iaac-gcloud/files/confluent_syslog/bin
+
+  - name: source ~/.bashrc
+    ansible.builtin.shell: 
 
 # - name: execute shell script to export path 
 #   ansible.builtin.shell: /home/ansible/iaac-gcloud/files/confluent_set_path.sh
