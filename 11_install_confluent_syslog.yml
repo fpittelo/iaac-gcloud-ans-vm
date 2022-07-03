@@ -64,9 +64,6 @@
       insertafter: EOF
       line: export PATH=$PATH:/home/ansible/iaac-gcloud/files/confluent_syslog/bin
 
-  - name: source ~/.bashrc
-    ansible.builtin.shell: 
-
 # - name: execute shell script to export path 
 #   ansible.builtin.shell: /home/ansible/iaac-gcloud/files/confluent_set_path.sh
 
