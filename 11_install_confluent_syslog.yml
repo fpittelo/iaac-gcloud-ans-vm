@@ -55,6 +55,8 @@
       src: /home/ansible/.bashrc
       dest: /home/ansible/.bashrc_backup
       remote_src: yes
+      owner: ansible
+      group: ansible
 
   - name: Export ~/.bashrc file with path
     ansible.builtin.lineinfile:
