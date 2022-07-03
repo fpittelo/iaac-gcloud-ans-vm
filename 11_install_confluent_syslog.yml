@@ -53,7 +53,7 @@
   - name: Create a backup of ~/.bashrc before editing
     ansible.builtin.copy:
       src: /home/ansible/.bashrc
-      dest: home/ansible/.bashrc_backup
+      dest: /home/ansible/.bashrc_backup
       remote_src: yes
 
   - name: Export ~/.bashrc file with path
