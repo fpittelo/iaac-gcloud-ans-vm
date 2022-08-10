@@ -9,7 +9,7 @@
 - name: Add ansible repository
   ansible.builtin.apt_repository:
     repo: 'ppa:ansible/ansible'
-    codename: impish
+    codename: jammy
 
 ############## Install Ansible ##############################
 
