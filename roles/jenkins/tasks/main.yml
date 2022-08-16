@@ -59,22 +59,21 @@
     name: jenkins
     enabled: yes
 
+################ Start Jenkins Service and pause ######################
+
+- name: Start service jenkins, if not started
+  ansible.builtin.service:
+   name: jenkins
+   state: started
+
+- name: Pause for 45 seconds for instances start
+  pause:
+   seconds: 45
+
 ################ Reboot the machine ######################
 
 - name: reboot the machine
   ansible.builtin.reboot:
-
-################ Start Jenkins Service and pause ######################
-
-#- name: Start service jenkins, if not started
-# ansible.builtin.service:
-#   name: jenkins
-#   state: started
-
-#- name: Pause for 45 seconds for instances start
-# pause:
-#   seconds: 45
-
 
 ############## Clean up tasks #################################
 
