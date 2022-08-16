@@ -55,5 +55,5 @@
 
 ################ import_playbooks ######################
 
-- name: install packages for all machines
-  import_playbook: apt_update_install_all.yml
+#- name: install packages for all machines
+#  import_playbook: apt_update_install_all.yml

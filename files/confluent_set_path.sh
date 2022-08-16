@@ -1,0 +1,1 @@
+export PATH="$PATH:/home/ansible/iaac-gcloud/files/confluent_syslog/bin"

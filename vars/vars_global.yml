@@ -3,11 +3,11 @@ gcp_project: iaac-333811
 gcp_cred_kind: serviceaccount
 gcp_account_file: /home/ansible/security/ansible-iaac-gcloud.json
 gcp_region: 'europe-west6'
-gcp_zone: 'europe-west6-b'
+gcp_zone: 'europe-west6-a'
 gcp_net_mgt: 'default'
 gcp_net_prod: 'iaac-gcloud-vpc'
-#gcp_vm_img: 'projects/ubuntu-os-cloud/global/images/ubuntu-2010-groovy-v20210511a'
-gcp_vm_img: 'projects/ubuntu-os-cloud/global/images/ubuntu-2110-impish-v20211208a'
+#gcp_vm_img: 'projects/ubuntu-os-cloud/global/images/ubuntu-2110-impish-v20211208a'
+gcp_vm_img: 'projects/ubuntu-os-cloud/global/images/ubuntu-2204-jammy-v20220810'
 gcp_vm_type: 'e2-micro'
 gcp_vm_type_2: 'e2-small'
 gcp_net_tier: 'STANDARD'
