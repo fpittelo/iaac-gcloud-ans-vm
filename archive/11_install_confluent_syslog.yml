@@ -1,0 +1,75 @@
+---
+- name: install Confluent hub client and Syslog connector
+  hosts: webserver01
+  become: true
+
+  tasks:
+
+  - name: Install open-jdk
+    apt:
+      name: openjdk-11-jdk
+      state: present
+
+  - name: Create Confluent-Hub directory if it does not exist
+    ansible.builtin.file:
+      path: /home/ansible/iaac-gcloud/files/confluent_hub
+      state: directory
+      owner: ansible
+      group: ansible
+      recurse: yes
+
+  - name: Create Confluent-Syslog directory if it does not exist
+    ansible.builtin.file:
+      path: /home/ansible/iaac-gcloud/files/confluent_syslog
+      state: directory
+      owner: ansible
+      group: ansible
+      recurse: yes
+
+  - name: extract Confluent-Syslog connector
+    ansible.builtin.unarchive:
+      src: https://d1i4a15mxbxib1.cloudfront.net/api/plugins/confluentinc/kafka-connect-syslog/versions/1.4.3/confluentinc-kafka-connect-syslog-1.4.3.zip
+      dest: /home/ansible/iaac-gcloud/files/confluent_syslog/
+      remote_src: yes
+      owner: ansible
+      group: ansible
+
+  - name: extract Confluent-Hub connector
+    ansible.builtin.unarchive:
+      src: http://client.hub.confluent.io/confluent-hub-client-latest.tar.gz
+      dest: /home/ansible/iaac-gcloud/files/confluent_hub/
+      remote_src: yes
+      owner: ansible
+      group: ansible
+
+  - name: Copy file with owner and permissions
+    ansible.builtin.copy:
+      src: /home/ansible/iaac-gcloud/files/confluent_set_path.sh
+      dest: /home/ansible/iaac-gcloud/files/
+      owner: ansible
+      group: ansible
+      mode: '0755'
+
+  - name: Create a backup of ~/.bashrc before editing
+    ansible.builtin.copy:
+      src: /home/ansible/.bashrc
+      dest: /home/ansible/.bashrc_backup
+      remote_src: yes
+      owner: ansible
+      group: ansible
+
+  - name: Export ~/.bashrc file with path
+    ansible.builtin.lineinfile:
+      path: /home/ansible/.bashrc
+      line: export PATH="/home/ansible/iaac-gcloud/files/confluent_syslog/bin:$PATH"
+      insertafter: EOF
+
+  - name: Export ~/.bashrc file with path
+    ansible.builtin.lineinfile:
+      path: /home/ansible/.bashrc
+      line: export PATH="/home/ansible/iaac-gcloud/files/confluent_hub/bin:$PATH"
+      insertafter: EOF
+
+# - name: execute shell script to export path 
+#   ansible.builtin.shell: /home/ansible/iaac-gcloud/files/confluent_set_path.sh
+

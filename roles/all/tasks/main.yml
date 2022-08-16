@@ -28,6 +28,11 @@
     name: gnupg, software-properties-common
     state: present
 
+- name: install unzip
+  apt:
+    name: unzip
+    state: present
+
 ############# Copy host file to all hosts #####
 
 - name: moloch hosts file to all hosts
@@ -48,9 +53,3 @@
 - name: Remove packages dependencies no longer required
   apt:
     autoremove: yes
-
-################ pause ######################
-
-- name: Pause for 15 seconds for instances start
-  pause:
-    seconds: 15

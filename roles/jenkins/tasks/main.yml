@@ -9,7 +9,7 @@
 - name: Add ansible repository
   ansible.builtin.apt_repository:
     repo: 'ppa:ansible/ansible'
-    codename: impish
+    codename: jammy
 
 ############## Install Ansible ##############################
 
@@ -45,31 +45,43 @@
     mode: '0644'
     backup: yes
 
-- name: apt-get update on all hosts
-  apt:
-    update_cache: yes
+#- name: apt-get update on all hosts
+#  apt:
+#    update_cache: yes
 
 - name: Install jenkins
   apt:
     name: jenkins
     state: present
+    update_cache: yes
 
 - name: Enable service jenkins, and not touch the state
   ansible.builtin.service:
     name: jenkins
     enabled: yes
 
+################ Start Jenkins Service and pause ######################
+
 - name: Start service jenkins, if not started
   ansible.builtin.service:
-    name: jenkins
-    state: started
+   name: jenkins
+   state: started
+
+- name: Pause for 45 seconds for instances start
+  pause:
+   seconds: 45
+
+################ Reboot the machine ######################
+
+- name: reboot the machine
+  ansible.builtin.reboot:
 
 ############## Clean up tasks #################################
 
-- name: Remove useless packages from the cache
-  apt:
-    autoclean: yes
+#- name: Remove useless packages from the cache
+# apt:
+#   autoclean: yes
 
-- name: Remove dependencies that are no longer required
-  apt:
-    autoremove: yes
+#- name: Remove dependencies that are no longer required
+#  apt:
+#    autoremove: yes

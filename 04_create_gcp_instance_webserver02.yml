@@ -59,9 +59,9 @@
 
 ################ pause ######################
 
-    - name: Pause for 30 seconds for instances start
+    - name: Pause for 45 seconds for instances start
       pause:
-        seconds: 30
+        seconds: 45
 
 ################ import_playbooks ######################
 
