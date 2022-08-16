@@ -45,9 +45,9 @@
     mode: '0644'
     backup: yes
 
-#- name: apt-get update on all hosts
-# apt:
-#   update_cache: yes
+- name: apt-get update on all hosts
+  apt:
+    update_cache: yes
 
 - name: Install jenkins
   apt:
