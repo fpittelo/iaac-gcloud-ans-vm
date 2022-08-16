@@ -28,6 +28,14 @@
     state: started
     enabled: yes
 
+################ pause ######################
+
+- name: Pause for 45 seconds for instances start
+  pause:
+    seconds: 10
+
+################ pause ######################
+
 - name: verify Grafana is up and running
   uri:
     url: "http://127.0.0.1:3000"
