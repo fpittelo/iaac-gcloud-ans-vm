@@ -53,6 +53,7 @@
   apt:
     name: jenkins
     state: present
+    ignore_errors: yes
 
 - name: Enable service jenkins, and not touch the state
   ansible.builtin.service:
