@@ -30,7 +30,7 @@
 
 ################ pause ######################
 
-- name: Pause for 45 seconds for instances start
+- name: Pause for 10 seconds for instances start
   pause:
     seconds: 10
 
