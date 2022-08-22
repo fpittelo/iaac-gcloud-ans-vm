@@ -18,11 +18,18 @@
     name: ansible
     state: present
 
-############## install Open-JDK ##############################
+############## install default-jre ##############################
 
-- name: Install open-jdk
+- name: Install default-jre
   apt:
-    name: openjdk-11-jdk
+    name: default-jre
+    state: present
+
+############## install default-jdk ##############################
+
+- name: Install default-jdk
+  apt:
+    name: default-jdk
     state: present
 
 ############## install Jenkins #################################
@@ -60,7 +67,7 @@
     name: jenkins
     enabled: yes
 
-################ Start Jenkins Service and pause ######################
+####### Start Jenkins Service and pause #################
 
 - name: Start service jenkins, if not started
   ansible.builtin.service:
@@ -71,17 +78,9 @@
   pause:
    seconds: 45
 
-################ Reboot the machine ######################
+################ Reboot the machine #####################
 
 - name: reboot the machine
   ansible.builtin.reboot:
 
-############## Clean up tasks #################################
-
-#- name: Remove useless packages from the cache
-# apt:
-#   autoclean: yes
-
-#- name: Remove dependencies that are no longer required
-#  apt:
-#    autoremove: yes
+############## End ######################################
